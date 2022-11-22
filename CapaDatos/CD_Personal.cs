@@ -28,6 +28,23 @@ namespace CapaDatos
             
         }
 
+        public DataTable Buscar(string apellido, long cuil)
+        {
+
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "BuscarPersonal";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@cuil", cuil);
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            conexion.CerrarConexion();
+
+            comando.Parameters.Clear();
+            return tabla;
+
+        }
+
         public void Insertar(string nombre,string apellido,long cuil,string ingreso, int puesto, bool activo ) {
             //PROCEDIMNIENTO
             

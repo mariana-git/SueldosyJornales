@@ -45,11 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlesDeUsuario\UC_Liquidaciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\UC_Liquidaciones.Designer.cs">
+      <DependentUpon>UC_Liquidaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlesDeUsuario\UC_Personal.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ControlesDeUsuario\UC_Personal.Designer.cs">
       <DependentUpon>UC_Personal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\UC_Puestos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\UC_Puestos.Designer.cs">
+      <DependentUpon>UC_Puestos.cs</DependentUpon>
     </Compile>
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
@@ -59,8 +71,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlesDeUsuario\UC_Liquidaciones.resx">
+      <DependentUpon>UC_Liquidaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\UC_Personal.resx">
       <DependentUpon>UC_Personal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\UC_Puestos.resx">
+      <DependentUpon>UC_Puestos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Index.resx">
       <DependentUpon>Index.cs</DependentUpon>

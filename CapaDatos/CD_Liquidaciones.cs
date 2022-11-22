@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos
 {
-    public class CD_Puestos
+    public class CD_Liquidaciones
     {
         private CD_Conexion conexion = new CD_Conexion();
 
@@ -20,7 +20,7 @@ namespace CapaDatos
         {
 
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "MostrarPuestos";
+            comando.CommandText = "MostrarLiquidaciones";
             comando.CommandType = CommandType.StoredProcedure;
             leer = comando.ExecuteReader();
             tabla.Load(leer);
@@ -29,14 +29,14 @@ namespace CapaDatos
 
         }
 
-        public DataTable Buscar(string puesto, int hs)
+        public DataTable Buscar(string apellido, long cuil)
         {
 
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "BuscarPuesto";
+            comando.CommandText = "BuscarPersonal";
             comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.AddWithValue("@puesto", puesto);
-            comando.Parameters.AddWithValue("@hs", hs);
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@cuil", cuil);
             leer = comando.ExecuteReader();
             tabla.Load(leer);
             conexion.CerrarConexion();
@@ -46,18 +46,19 @@ namespace CapaDatos
 
         }
 
-        public void Insertar(string puesto, string diassemana, int hssemanales, decimal sueldo, decimal extras)
+        public void Insertar(string nombre, string apellido, long cuil, string ingreso, int puesto, bool activo)
         {
             //PROCEDIMNIENTO
 
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "InsertarPuestos";
+            comando.CommandText = "InsetarPersonal";
             comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@nombre", nombre);
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@cuil", cuil);
+            comando.Parameters.AddWithValue("@ingreso", ingreso);
             comando.Parameters.AddWithValue("@puesto", puesto);
-            comando.Parameters.AddWithValue("@diasSemana", diassemana);
-            comando.Parameters.AddWithValue("@hsSemanales", hssemanales);
-            comando.Parameters.AddWithValue("@bruto", sueldo);
-            comando.Parameters.AddWithValue("@extras", extras);
+            comando.Parameters.AddWithValue("@activo", activo);
 
             comando.ExecuteNonQuery();
 
@@ -65,17 +66,18 @@ namespace CapaDatos
 
         }
 
-        public void Editar(string puesto, string diassemana, int hssemanales, decimal sueldo, decimal extras, int id)
+        public void Editar(string nombre, string apellido, long cuil, string ingreso, int puesto, bool activo, int id)
         {
 
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "EditarPuestos";
+            comando.CommandText = "EditarPersonal";
             comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@nombre", nombre);
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@cuil", cuil);
+            comando.Parameters.AddWithValue("@ingreso", ingreso);
             comando.Parameters.AddWithValue("@puesto", puesto);
-            comando.Parameters.AddWithValue("@diasSemana", diassemana);
-            comando.Parameters.AddWithValue("@hsSemanales", hssemanales);
-            comando.Parameters.AddWithValue("@bruto", sueldo);
-            comando.Parameters.AddWithValue("@extras", extras);
+            comando.Parameters.AddWithValue("@activo", activo);
             comando.Parameters.AddWithValue("@id", id);
 
             comando.ExecuteNonQuery();
@@ -86,14 +88,15 @@ namespace CapaDatos
         public void Eliminar(int id)
         {
             comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = "EliminarPuestos";
+            comando.CommandText = "EliminarPersonal";
             comando.CommandType = CommandType.StoredProcedure;
 
-            comando.Parameters.AddWithValue("@idPuestos", id);
+            comando.Parameters.AddWithValue("@idpersonal", id);
 
             comando.ExecuteNonQuery();
 
             comando.Parameters.Clear();
         }
+
     }
 }

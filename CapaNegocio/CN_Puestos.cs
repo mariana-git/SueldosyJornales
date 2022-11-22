@@ -13,28 +13,53 @@ namespace CapaNegocio
     {
         private CD_Puestos objetoCD = new CD_Puestos();
 
-        public DataTable MostrarPuestos()
+        public DataTable MostrarPuestos(string dato)
         {
 
             DataTable tabla = new DataTable();
-            tabla = objetoCD.Mostrar();
-            return tabla;
+            if (dato == "")
+            {
+                tabla = objetoCD.Mostrar();
+                return tabla;
+            }
+            else
+            {
+                if (int.TryParse(dato, out int hs))
+                {
+                    tabla = objetoCD.Buscar("", hs);
+                }
+                else
+                    tabla = objetoCD.Buscar(dato, 0);
+                return tabla;
+            }
+            
+            
         }
 
-        public void InsertarPuestos(string puesto, string diassemana, int hssemanales)
+        public void InsertarPuestos(string puesto, string diassemana, string hssemanales, string sueldo, string extras)
         {
+            if (decimal.TryParse(sueldo, out decimal sueldod) && decimal.TryParse(extras, out decimal extrasd))
+            {
+                objetoCD.Insertar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod, extrasd);
+            }
+            else
+                throw new Exception($" {sueldo} o {extras} no válido.");
 
-            objetoCD.Insertar(puesto, diassemana,Convert.ToInt32(hssemanales));
         }
 
-        public void EditarPuestos(string puesto, string diassemana, int hssemanales, string id)
+        public void EditarPuestos(string puesto, string diassemana, string hssemanales, string sueldo, string extras, string id)
         {
-            objetoCD.Editar(puesto, diassemana, Convert.ToInt32(hssemanales), Convert.ToInt32(id));
+            if (decimal.TryParse(sueldo, out decimal sueldod) && decimal.TryParse(extras, out decimal extrasd))
+            {
+                objetoCD.Editar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod, extrasd, Convert.ToInt32(id));
+            }
+            else
+                throw new Exception($" {sueldo} o {extras} no válido.");
+
         }
 
         public void EliminarPuestos(string id)
         {
-
             objetoCD.Eliminar(Convert.ToInt32(id));
         }
 

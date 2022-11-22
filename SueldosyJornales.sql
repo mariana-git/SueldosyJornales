@@ -45,10 +45,33 @@ as
 select *from Personal
 go
 
+create proc MostrarLiquidaciones
+as
+select *from Personal
+go
+
+create proc BuscarPersonal
+@apellido nvarchar (100),
+@cuil bigint
+as
+select *from Personal where Apellido=@apellido or CUIL=@cuil
+go
+
+exec BuscarPersonal Maradona,00000000000
+
 create proc MostrarPuestos
 as
 select *from Puestos
 go
+
+create proc BuscarPuesto
+@puesto nvarchar (100),
+@hs int
+as
+select *from Puestos where Puesto like '%'+ @puesto +'%' or HsSemanales=@hs
+go
+
+exec BuscarPuesto '',40
 --------------------------INSERTAR 
 create proc InsetarPersonal
 @nombre nvarchar (100),
@@ -59,6 +82,18 @@ create proc InsetarPersonal
 @activo bit
 as
 insert into Personal values (@nombre,@apellido,@cuil,@ingreso,@puesto,@activo)
+go
+
+create proc InsertarLiquidaciones
+@anio smallint,
+@aportes decimal(10,2),
+@os decimal(10,2),
+@extras decimal(10,2),
+@anticipos decimal(10,2),
+@idPersonal int,
+@idPeriodo int
+as
+insert into Personal values (@anio,@aportes,@os,@extras,@anticipos,@idPersonal,@idPeriodo)
 go
 
 create proc InsertarPuestos
@@ -104,3 +139,4 @@ create proc EditarPuestos
 as
 update Puestos set Puesto=@puesto, HsSemanales=@hsSemanales, DiasSemana=@diasSemana where Id=@id
 go
+

@@ -1,12 +1,6 @@
 ﻿using CapaNegocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.ControlesDeUsuario
@@ -14,8 +8,10 @@ namespace CapaPresentacion.ControlesDeUsuario
     public partial class UC_Personal : UserControl
     {
         #region ATRIBUTOS
+
         CN_Personal PersonalCN = new CN_Personal();
         CN_Puestos PuestosCN = new CN_Puestos();
+
         private string idPersonal = null;
         private bool Editar = false;
         #endregion
@@ -24,9 +20,34 @@ namespace CapaPresentacion.ControlesDeUsuario
         public UC_Personal()
         {
             InitializeComponent();
-            MostrarPersonal();
-            dgvPersonal.Columns["Id"].Visible = false;
+            MostrarPersonal("");
+            MostrarPuestos();
+        }
+        #endregion
 
+        #region METODOS
+        private void MostrarPersonal(string dato)
+        {
+            dgvPersonal.DataSource = null;
+            dgvPersonal.Columns.Clear();
+            CN_Personal PersonalCN = new CN_Personal();
+            dgvPersonal.DataSource = PersonalCN.MostrarPersonal(busqueda.Text);
+            OpcionesDgv();
+            BotonesEditarEliminar();
+            dgvPersonal.Columns["Id"].Visible = false;
+            dgvPersonal.Columns["PuestoId"].Visible = false;
+            limpiarForm();
+        }
+
+        private void MostrarPuestos()
+        {
+            cmbPuestos.ValueMember = "Id";
+            cmbPuestos.DisplayMember = "Puesto";
+            cmbPuestos.DataSource = PuestosCN.MostrarPuestos(""); 
+        }
+
+        private void BotonesEditarEliminar()
+        {
 
             //Boton Borrar
             Icon iconoBorrar = new Icon(Environment.CurrentDirectory + @"\\delete2.ico");
@@ -35,8 +56,8 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.Name = "Eliminar";
             columnaBorrar.HeaderText = "Eliminar";
             columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            columnaBorrar.ToolTipText =  "Borrar Registros";
-            dgvPersonal.Columns.Insert(7, columnaBorrar);
+            columnaBorrar.ToolTipText = "Borrar Registros";
+            dgvPersonal.Columns.Insert(8, columnaBorrar);
 
             //Boton Editar
             Icon iconoEditar = new Icon(Environment.CurrentDirectory + @"\\edit2.ico");
@@ -46,27 +67,19 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaEditar.HeaderText = "Modificar";
             columnaEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             columnaEditar.ToolTipText = "Modificar Registros";
-            dgvPersonal.Columns.Insert(8, columnaEditar);
-            MostrarPuestos();
+            dgvPersonal.Columns.Insert(9, columnaEditar);
             cmbPuestos.SelectedIndex = -1;
-
-        }
-        #endregion
-
-        #region METODOS
-        private void MostrarPersonal()
-        {
-            CN_Personal tablaPersonal = new CN_Personal();
-            OpcionesDgv();
-            dgvPersonal.DataSource = tablaPersonal.MostrarPersonal();
         }
 
-        private void MostrarPuestos()
+        private void limpiarForm()
         {
-            CN_Puestos PuestosCN = new CN_Puestos();
-            cmbPuestos.ValueMember = "Id";
-            cmbPuestos.DisplayMember = "Puesto";
-            cmbPuestos.DataSource = PuestosCN.MostrarPuestos(); //dt es el datatable
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtCuil.Text = "";
+            cmbPuestos.SelectedIndex = -1;
+            cbxActivo.CheckState = CheckState.Unchecked;
+            gbx.Enabled = false;
+            btnEliminar.Visible = false;
         }
 
         private void OpcionesDgv()
@@ -84,20 +97,16 @@ namespace CapaPresentacion.ControlesDeUsuario
             dgvPersonal.DefaultCellStyle.SelectionBackColor = Color.Black; //color seleccion de row
             dgvPersonal.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;// color font de seleccion de row
 
+
         }
 
-        private void limpiarForm()
+        private void txtCuil_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            txtNombre.Clear();
-            txtApellido.Clear();
-            txtCuil.Text = "";
-            cmbPuestos.SelectedIndex = -1;
-            txtIngreso.Clear();
-            cbxActivo.CheckState = CheckState.Unchecked;
+            if (char.IsDigit(e.KeyChar)) e.Handled = false;
+            else e.Handled = true;
         }
 
-       
+
         #endregion
 
         #region BOTONES
@@ -108,35 +117,25 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
                 try
                 {
-                    bool activo = false;
-                    if (cbxActivo.Checked) activo = true;
-                    else activo = false;
-
-                    PersonalCN.InsertarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, txtIngreso.Text, cmbPuestos.SelectedValue.ToString(), activo);
+                    CN_Personal PersonalCN = new CN_Personal();
+                    PersonalCN.InsertarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue.ToString(), cbxActivo.Checked);
                     MessageBox.Show("se inserto correctamente");
-                    MostrarPersonal();
-                    limpiarForm();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("no se pudo insertar los datos por: " + ex);
-                }
+                    MostrarPersonal("");
             }
+                catch (Exception ex)
+            {
+                MessageBox.Show("no se pudo insertar los datos por: " + ex);
+            }
+        }
             //EDITAR
             if (Editar == true)
             {
-
                 try
                 {
-                    bool activo = false;
-                    if (cbxActivo.Checked) activo = true;
-                    else activo = false;
-
-                    PersonalCN.EditarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, txtIngreso.Text, cmbPuestos.Text, activo, idPersonal);
+                    PersonalCN.EditarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue, cbxActivo.Checked, idPersonal);
                     MessageBox.Show("se edito correctamente");
-                    MostrarPersonal();
-                    limpiarForm();
-                    Editar = false;
+                    MostrarPersonal("");
+                    
                 }
                 catch (Exception ex)
                 {
@@ -145,45 +144,61 @@ namespace CapaPresentacion.ControlesDeUsuario
             }
         }
 
-        #endregion
-
         private void dgvPersonal_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //paso los datos al form
+            txtNombre.Text = dgvPersonal.CurrentRow.Cells["Nombre"].Value.ToString();
+            txtApellido.Text = dgvPersonal.CurrentRow.Cells["Apellido"].Value.ToString();
+            txtCuil.Text = dgvPersonal.CurrentRow.Cells["CUIL"].Value.ToString();
+            cmbPuestos.SelectedValue = Convert.ToInt32(dgvPersonal.CurrentRow.Cells["PuestoId"].Value);
+            dtpIngreso.Value = (DateTime)dgvPersonal.CurrentRow.Cells["FechaIngreso"].Value;
+            cbxActivo.Checked = (bool)dgvPersonal.CurrentRow.Cells["Activo"].Value;
+            idPersonal = dgvPersonal.CurrentRow.Cells["Id"].Value.ToString();
+            gbx.Enabled = true;
+
             if (dgvPersonal.Columns[e.ColumnIndex].Name == "Eliminar")
             {
-                DialogResult resultado = MessageBox.Show("Eliminar registro de manera permanente",
-                "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-                if (resultado == DialogResult.OK)
-                {
-                    idPersonal = dgvPersonal.CurrentRow.Cells["Id"].Value.ToString();
-                    PersonalCN.EliminarPersonal(idPersonal);
-                    MessageBox.Show("Eliminado correctamente");
-                    limpiarForm();
-                    MostrarPersonal();
-                }
-
-
+                btnEliminar_Click(null, null);
             }
-            else if (dgvPersonal.Columns[e.ColumnIndex].Name == "Modificar")
+            else
             {
-                limpiarForm();
                 Editar = true;
-                txtNombre.Text = dgvPersonal.CurrentRow.Cells["Nombre"].Value.ToString();
-                txtApellido.Text = dgvPersonal.CurrentRow.Cells["Apellido"].Value.ToString();
-                txtCuil.Text = dgvPersonal.CurrentRow.Cells["CUIL"].Value.ToString();
-                cmbPuestos.SelectedValue = Convert.ToInt32(dgvPersonal.CurrentRow.Cells["PuestosId"].Value);//TODO acceder a los puestos y poner los puestos en el deplegable tb
-                txtIngreso.Text = dgvPersonal.CurrentRow.Cells["FechaIngreso"].Value.ToString();
-                string estado = dgvPersonal.CurrentRow.Cells["Activo"].Value.ToString();
-                if (estado == "True") cbxActivo.Checked = true;
-                idPersonal = dgvPersonal.CurrentRow.Cells["Id"].Value.ToString();
-
+                btnEliminar.Visible= true;
             }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            limpiarForm();
+            Editar = false;
+            MostrarPersonal("");
+            gbx.Enabled = true;
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            MostrarPersonal(busqueda.Text.Trim());
+        }
+        
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = MessageBox.Show("Eliminar registro de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
+               "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            CN_Personal PersonalCN = new CN_Personal();
+            if (resultado == DialogResult.OK)
+            {
+                idPersonal = dgvPersonal.CurrentRow.Cells["Id"].Value.ToString();
+                PersonalCN.EliminarPersonal(idPersonal);
+                MessageBox.Show("Eliminado correctamente");
+                MostrarPersonal("");
+            }
+            else
+            {
+                MostrarPersonal("");
+            }
+        }
+
+        #endregion
+
     }
 }

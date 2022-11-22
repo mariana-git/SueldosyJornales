@@ -39,5 +39,15 @@ namespace CapaPresentacion
         {
             AbrirUC(new ControlesDeUsuario.UC_Personal());
         }
+
+        private void btnPuestos_Click(object sender, EventArgs e)
+        {
+            AbrirUC(new ControlesDeUsuario.UC_Puestos());
+        }
+
+        private void btnLiquidaciones_Click(object sender, EventArgs e)
+        {
+            AbrirUC(new ControlesDeUsuario.UC_Liquidaciones());
+        }
     }
 }
