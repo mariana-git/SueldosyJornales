@@ -57,7 +57,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.HeaderText = "Eliminar";
             columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             columnaBorrar.ToolTipText = "Borrar Registros";
-            dgvPersonal.Columns.Insert(8, columnaBorrar);
+            dgvPersonal.Columns.Insert(9, columnaBorrar);
 
             //Boton Editar
             Icon iconoEditar = new Icon(Environment.CurrentDirectory + @"\\edit2.ico");
@@ -67,7 +67,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaEditar.HeaderText = "Modificar";
             columnaEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             columnaEditar.ToolTipText = "Modificar Registros";
-            dgvPersonal.Columns.Insert(9, columnaEditar);
+            dgvPersonal.Columns.Insert(10, columnaEditar);
             cmbPuestos.SelectedIndex = -1;
         }
 

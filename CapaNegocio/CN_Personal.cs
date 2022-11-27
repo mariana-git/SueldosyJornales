@@ -26,12 +26,16 @@ namespace CapaNegocio
             }
             else
             {
-                if (long.TryParse(dato, out long cuil))
+                if (int.TryParse(dato, out int legajo))
                 {
-                    tabla = objetoCD.Buscar("", cuil);
+                    tabla = objetoCD.Buscar("", 0,legajo);
+                }
+                else if (long.TryParse(dato, out long cuil))
+                {
+                    tabla = objetoCD.Buscar("", cuil,0);
                 }
                 else 
-                tabla = objetoCD.Buscar(dato, 0);
+                tabla = objetoCD.Buscar(dato, 0,0);
                 return tabla;
             }
             

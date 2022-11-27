@@ -28,7 +28,7 @@ namespace CapaDatos
             
         }
 
-        public DataTable Buscar(string apellido, long cuil)
+        public DataTable Buscar(string apellido, long cuil, int legajo)
         {
 
             comando.Connection = conexion.AbrirConexion();
@@ -36,6 +36,7 @@ namespace CapaDatos
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@apellido", apellido);
             comando.Parameters.AddWithValue("@cuil", cuil);
+            comando.Parameters.AddWithValue("@legajo", legajo);
             leer = comando.ExecuteReader();
             tabla.Load(leer);
             conexion.CerrarConexion();

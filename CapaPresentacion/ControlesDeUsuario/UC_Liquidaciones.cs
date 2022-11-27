@@ -14,7 +14,7 @@ namespace CapaPresentacion.ControlesDeUsuario
     public partial class UC_Liquidaciones : UserControl
     {
         #region ATRIBUTOS
-        private string idPuesto = null;
+        private string idLiquidacion = null;
         private bool Editar = false;
         #endregion
 
@@ -52,14 +52,22 @@ namespace CapaPresentacion.ControlesDeUsuario
             OpcionesDgv();
             BotonesEditarEliminar();
             dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
+            dgvLiquidaciones.Columns["Jubilación"].Visible = false; 
+            dgvLiquidaciones.Columns["ObraSocial"].Visible = false;
+            dgvLiquidaciones.Columns["PAMI"].Visible = false;
+            dgvLiquidaciones.Columns["Bonos"].Visible = false;
+            dgvLiquidaciones.Columns["HsExtra"].Visible = false;
+            dgvLiquidaciones.Columns["Anticipos"].Visible = false;
+
+
             limpiarForm();
         }
 
         private void limpiarForm()
         {
-            txtDenominacion.Clear();
-            txtDias.Clear();
-            txtHs.Clear();
+            //txtDenominacion.Clear();
+            txtJubilacion.Clear();
+            txtBruto.Clear();
             gbx.Enabled = false;
             btnEliminar.Visible = false;
         }
@@ -93,7 +101,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.HeaderText = "Eliminar";
             columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             columnaBorrar.ToolTipText = "Borrar Registros";
-            dgvLiquidaciones.Columns.Insert(9, columnaBorrar);
+            dgvLiquidaciones.Columns.Insert(18, columnaBorrar);
 
             //Boton Editar
             Icon iconoEditar = new Icon(Environment.CurrentDirectory + @"\\edit2.ico");
@@ -103,18 +111,55 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaEditar.HeaderText = "Modificar";
             columnaEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             columnaEditar.ToolTipText = "Modificar Registros";
-            dgvLiquidaciones.Columns.Insert(10, columnaEditar);
+            dgvLiquidaciones.Columns.Insert(19, columnaEditar);
         }
 
-        private void dgvLiquidaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        #endregion
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Liquidacion formulario2 = new Liquidacion(idLiquidacion);
+            formulario2.Show();
+        }
+
+        private void dgvLiquidaciones_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             //paso los datos al form
-            txtDenominacion.Text = dgvLiquidaciones.CurrentRow.Cells["Puesto"].Value.ToString();
-            txtHs.Text = dgvLiquidaciones.CurrentRow.Cells["HsSemanales"].Value.ToString();
-            txtDias.Text = dgvLiquidaciones.CurrentRow.Cells["DiasSemana"].Value.ToString();
-            txtSueldo.Text = dgvLiquidaciones.CurrentRow.Cells["SueldoBruto"].Value.ToString();
-            txtExtras.Text = dgvLiquidaciones.CurrentRow.Cells["ValorHoraExtra"].Value.ToString();
-            idPuesto = dgvLiquidaciones.CurrentRow.Cells["Id"].Value.ToString();
+
+            txtMes.Text = dgvLiquidaciones.CurrentRow.Cells["Mes"].Value.ToString();
+            txtAnio.Text = dgvLiquidaciones.CurrentRow.Cells["Año"].Value.ToString();
+            txtConcepto.Text = dgvLiquidaciones.CurrentRow.Cells["Tipo"].Value.ToString();
+
+            txtLegajo.Text = dgvLiquidaciones.CurrentRow.Cells["Legajo"].Value.ToString();
+            txtNombre.Text = dgvLiquidaciones.CurrentRow.Cells["Nombre"].Value.ToString();
+            txtApellido.Text = dgvLiquidaciones.CurrentRow.Cells["Apellido"].Value.ToString();
+            txtCuil.Text = dgvLiquidaciones.CurrentRow.Cells["CUIL"].Value.ToString();
+
+            txtIngreso.Text = dgvLiquidaciones.CurrentRow.Cells["FechaIngreso"].Value.ToString();
+            txtPuesto.Text = dgvLiquidaciones.CurrentRow.Cells["Puesto"].Value.ToString();
+            txtBruto.Text = dgvLiquidaciones.CurrentRow.Cells["Bruto"].Value.ToString();
+
+            txtJubilacion.Text = dgvLiquidaciones.CurrentRow.Cells["Jubilación"].Value.ToString();
+            txtOS.Text = dgvLiquidaciones.CurrentRow.Cells["ObraSocial"].Value.ToString();
+            txtPAMI.Text = dgvLiquidaciones.CurrentRow.Cells["PAMI"].Value.ToString();
+
+            txtBono.Text = dgvLiquidaciones.CurrentRow.Cells["Bonos"].Value.ToString();
+            txtExtras.Text = dgvLiquidaciones.CurrentRow.Cells["HsExtra"].Value.ToString();
+            txtAnticipos.Text = dgvLiquidaciones.CurrentRow.Cells["Anticipos"].Value.ToString();
+
+            txtNeto.Text = dgvLiquidaciones.CurrentRow.Cells["Neto"].Value.ToString();
+            idLiquidacion = dgvLiquidaciones.CurrentRow.Cells["IdLiquidacion"].Value.ToString();
             gbx.Enabled = true;
 
             if (dgvLiquidaciones.Columns[e.ColumnIndex].Name == "Eliminar")
@@ -126,13 +171,6 @@ namespace CapaPresentacion.ControlesDeUsuario
                 Editar = true;
                 btnEliminar.Visible = true;
             }
-        }
-
-        #endregion
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
