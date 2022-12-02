@@ -7,7 +7,7 @@
 </div>
 
 ## 🔵Descripción del proyecto
-El presente software es el proyecto final de la materia "Algoritmos y Estructura de Datos III" de la Tecnicatura en Análisis de Sistemas, cursada en el 2021 en el ISFT 172 (BsAs - AR).
+El presente software es el proyecto final de la materia "Algoritmos y Estructura de Datos III" de la Tecnicatura en Análisis de Sistemas, cursada en el 2022 en el ISFT 172 (BsAs - AR).
 
 
 ## 🔵 Requerimientos Generales
