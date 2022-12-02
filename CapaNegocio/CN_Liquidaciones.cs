@@ -12,46 +12,126 @@ namespace CapaNegocio
     {
         private CD_Liquidaciones objetoCD = new CD_Liquidaciones();
         DataTable tabla = new DataTable();
+        DataTable tabla2 = new DataTable();
+        DataTable tabla3 = new DataTable();
+        int idperiodo = 0;
 
 
-        public DataTable MostrarLiquidaciones(string dato)
+        public DataTable MostrarLiquidaciones(string dato, string periodo)
         {
 
 
-            if (dato == "")
+            if (dato == "" && periodo=="")
             {
                 tabla = objetoCD.Mostrar();
                 return tabla;
             }
             else
             {
-                if (long.TryParse(dato, out long cuil))
+
+                if (dato != "" && periodo == "")
                 {
-                    tabla = objetoCD.Buscar("", cuil);
+                    if (int.TryParse(dato, out int legajo))
+                    {
+                        tabla = objetoCD.Buscar("", 0, legajo);
+                    }
+                    else if (long.TryParse(dato, out long cuil))
+                    {
+                        tabla = objetoCD.Buscar("", cuil, 0);
+                    }
+                    else
+                        tabla = objetoCD.Buscar(dato, 0, 0);
+                }
+                else if(dato != "" && periodo != "")
+                {
+                    int idP=Convert.ToInt32(periodo);
+
+                    if (int.TryParse(dato, out int legajo))
+                    {
+                        tabla2 = objetoCD.Buscar("", 0, legajo);
+                    }
+                    else if (long.TryParse(dato, out long cuil))
+                    {
+                        tabla2 = objetoCD.Buscar("", cuil, 0);
+                    }
+                    else
+                        tabla2 = objetoCD.Buscar(dato, 0, 0);
+
+                    tabla = tabla2.Select("IdLiquidacion =" + idP).CopyToDataTable();
                 }
                 else
-                    tabla = objetoCD.Buscar(dato, 0);
+                {
+                    int idP = Convert.ToInt32(periodo);
+                    tabla = objetoCD.Buscar(idP);
+                }
+
                 return tabla;
             }
 
         }
 
-        public void InsertarPersonal(string nombre, string apellido, string cuil, string ingreso, object puesto, bool activo)
-        {
+       
 
-            objetoCD.Insertar(nombre, apellido, Convert.ToInt64(cuil), ingreso, Convert.ToInt32(puesto), activo);
+        public DataTable InsertarLiquidaciones(string anio, string mes, string tipo)
+        {
+            CN_Periodos PeriodosCN = new CN_Periodos();
+            idperiodo = PeriodosCN.InsertarPeriodo(anio, mes,tipo);
+            CD_Personal PersonalCD = new CD_Personal();
+            tabla = PersonalCD.MostrarActivos();
+            foreach (DataRow row in tabla.Rows)
+            {
+
+                int idPersonal = Convert.ToInt32(row["Id"]);
+                decimal bruto = Convert.ToDecimal(row["SueldoBruto"]);
+                decimal jubilacion = bruto * 11 / 100;
+                decimal PAMI = bruto * 3 / 100;
+                decimal os = bruto * 3 / 100;
+                decimal neto = bruto - jubilacion - PAMI - os;
+                objetoCD.Insertar(idPersonal, idperiodo, bruto, jubilacion, PAMI, os, 0, 0, 0, neto);
+            }
+            tabla = MostrarLiquidaciones("",idperiodo.ToString());
+            return tabla;
+
         }
 
-        public void EditarPersonal(string nombre, string apellido, string cuil, string ingreso, object puesto, bool activo, string id)
+
+        public void EditarLiquidaciones(string idliq, string extras, string anticipos, string bonos, string bruto)
         {
-            objetoCD.Editar(nombre, apellido, Convert.ToInt64(cuil), ingreso, Convert.ToInt32(puesto), activo, Convert.ToInt32(id));
+            int idliquidacion = Convert.ToInt32(idliq);
+            decimal sumabruto = Convert.ToDecimal(bruto) + Convert.ToDecimal(extras) + Convert.ToDecimal(bonos);
+            decimal jubilacion = sumabruto * 11 / 100;
+            decimal PAMI = sumabruto * 3 / 100;
+            decimal os = sumabruto * 3 / 100;
+            decimal neto = sumabruto - jubilacion - PAMI - os - Convert.ToDecimal(anticipos);
+            objetoCD.Editar(idliquidacion, Convert.ToDecimal(extras) , Convert.ToDecimal(anticipos), Convert.ToDecimal(bonos), os, PAMI,jubilacion, neto);
         }
 
-        public void EliminarPersonal(string id)
+        public void EliminarLiquidacion(string id)
         {
 
             objetoCD.Eliminar(Convert.ToInt32(id));
         }
 
+        // anios meses tipo de periodos
+        public DataTable MostrarAnios()
+        {
+            tabla = objetoCD.MostrarAnios();
+            return tabla;
+        }
+        public DataTable MostrarMeses()
+        {
+            tabla = objetoCD.MostrarMeses();
+            return tabla;
+        }
+        public DataTable MostrarTipos()
+        {
+            tabla = objetoCD.MostrarTipos();
+            return tabla;
+        }
+        public DataTable MostrarPeriodos()
+        {
+            tabla = objetoCD.MostrarPeriodos();
+            return tabla;
+        }
     }
 }

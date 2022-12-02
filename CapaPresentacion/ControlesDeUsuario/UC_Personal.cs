@@ -33,7 +33,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             CN_Personal PersonalCN = new CN_Personal();
             dgvPersonal.DataSource = PersonalCN.MostrarPersonal(busqueda.Text);
             OpcionesDgv();
-            BotonesEditarEliminar();
+            BotonEliminar();
             dgvPersonal.Columns["Id"].Visible = false;
             dgvPersonal.Columns["PuestoId"].Visible = false;
             limpiarForm();
@@ -46,7 +46,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             cmbPuestos.DataSource = PuestosCN.MostrarPuestos(""); 
         }
 
-        private void BotonesEditarEliminar()
+        private void BotonEliminar()
         {
 
             //Boton Borrar
@@ -55,20 +55,10 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.Image = iconoBorrar.ToBitmap();
             columnaBorrar.Name = "Eliminar";
             columnaBorrar.HeaderText = "Eliminar";
-            columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             columnaBorrar.ToolTipText = "Borrar Registros";
             dgvPersonal.Columns.Insert(9, columnaBorrar);
 
-            //Boton Editar
-            Icon iconoEditar = new Icon(Environment.CurrentDirectory + @"\\edit2.ico");
-            DataGridViewImageColumn columnaEditar = new DataGridViewImageColumn();
-            columnaEditar.Image = iconoEditar.ToBitmap();
-            columnaEditar.Name = "Modificar";
-            columnaEditar.HeaderText = "Modificar";
-            columnaEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            columnaEditar.ToolTipText = "Modificar Registros";
-            dgvPersonal.Columns.Insert(10, columnaEditar);
-            cmbPuestos.SelectedIndex = -1;
         }
 
         private void limpiarForm()
@@ -96,6 +86,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             dgvPersonal.DefaultCellStyle.Font = new Font("Roboto", 13, GraphicsUnit.Pixel);// fijo font
             dgvPersonal.DefaultCellStyle.SelectionBackColor = Color.Black; //color seleccion de row
             dgvPersonal.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;// color font de seleccion de row
+            dgvPersonal.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
         }

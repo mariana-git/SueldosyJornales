@@ -28,6 +28,19 @@ namespace CapaDatos
             
         }
 
+        public DataTable MostrarActivos()
+        {
+
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "MostrarPersonalActivo";
+            comando.CommandType = CommandType.StoredProcedure;
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            conexion.CerrarConexion();
+            return tabla;
+
+        }
+
         public DataTable Buscar(string apellido, long cuil, int legajo)
         {
 

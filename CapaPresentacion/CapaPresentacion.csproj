@@ -45,11 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlesDeUsuario\UC_Liquidaciones.cs">
+    <Compile Include="ControlesDeUsuario\UC_GenerarLiquidacion.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\UC_Liquidaciones.Designer.cs">
-      <DependentUpon>UC_Liquidaciones.cs</DependentUpon>
+    <Compile Include="ControlesDeUsuario\UC_GenerarLiquidacion.Designer.cs">
+      <DependentUpon>UC_GenerarLiquidacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\UC_VerLiquidaciones.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\UC_VerLiquidaciones.Designer.cs">
+      <DependentUpon>UC_VerLiquidaciones.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlesDeUsuario\UC_Personal.cs">
       <SubType>UserControl</SubType>
@@ -77,8 +83,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ControlesDeUsuario\UC_Liquidaciones.resx">
-      <DependentUpon>UC_Liquidaciones.cs</DependentUpon>
+    <EmbeddedResource Include="ControlesDeUsuario\UC_GenerarLiquidacion.resx">
+      <DependentUpon>UC_GenerarLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\UC_VerLiquidaciones.resx">
+      <DependentUpon>UC_VerLiquidaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\UC_Personal.resx">
       <DependentUpon>UC_Personal.cs</DependentUpon>

@@ -45,7 +45,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             dgvPuestos.Columns.Clear();
             dgvPuestos.DataSource = PuestosCN.MostrarPuestos(busqueda.Text);
             OpcionesDgv();
-            BotonesEditarEliminar();
+            BotonEliminar();
             dgvPuestos.Columns["Id"].Visible = false;
             limpiarForm();
         }
@@ -57,6 +57,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             txtHs.Clear();
             gbx.Enabled = false;
             btnEliminar.Visible = false;
+            btnGuardar.Visible = false;
         }
 
         private void OpcionesDgv()
@@ -73,11 +74,11 @@ namespace CapaPresentacion.ControlesDeUsuario
             dgvPuestos.DefaultCellStyle.Font = new Font("Roboto", 13, GraphicsUnit.Pixel);// fijo font
             dgvPuestos.DefaultCellStyle.SelectionBackColor = Color.Black; //color seleccion de row
             dgvPuestos.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;// color font de seleccion de row
-
+            dgvPuestos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
 
-        private void BotonesEditarEliminar()
+        private void BotonEliminar()
         {
 
             //Boton Borrar
@@ -86,19 +87,9 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.Image = iconoBorrar.ToBitmap();
             columnaBorrar.Name = "Eliminar";
             columnaBorrar.HeaderText = "Eliminar";
-            columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             columnaBorrar.ToolTipText = "Borrar Registros";
-            dgvPuestos.Columns.Insert(6, columnaBorrar);
-
-            //Boton Editar
-            Icon iconoEditar = new Icon(Environment.CurrentDirectory + @"\\edit2.ico");
-            DataGridViewImageColumn columnaEditar = new DataGridViewImageColumn();
-            columnaEditar.Image = iconoEditar.ToBitmap();
-            columnaEditar.Name = "Modificar";
-            columnaEditar.HeaderText = "Modificar";
-            columnaEditar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            columnaEditar.ToolTipText = "Modificar Registros";
-            dgvPuestos.Columns.Insert(7, columnaEditar);
+            dgvPuestos.Columns.Insert(5, columnaBorrar);
         }
 
         private void dgvPuestos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -120,6 +111,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
                 Editar = true;
                 btnEliminar.Visible = true;
+                btnGuardar.Visible = true;
             }
         }
 

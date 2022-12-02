@@ -36,6 +36,8 @@
             this.btnPersonal = new System.Windows.Forms.Button();
             this.btnPuestos = new System.Windows.Forms.Button();
             this.btnLiquidaciones = new System.Windows.Forms.Button();
+            this.btnNuevaL = new System.Windows.Forms.Button();
+            this.btnVerL = new System.Windows.Forms.Button();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,7 +49,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(157)))), ((int)(((byte)(16)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -84,6 +86,8 @@
             this.flpLateral.Controls.Add(this.btnPersonal);
             this.flpLateral.Controls.Add(this.btnPuestos);
             this.flpLateral.Controls.Add(this.btnLiquidaciones);
+            this.flpLateral.Controls.Add(this.btnNuevaL);
+            this.flpLateral.Controls.Add(this.btnVerL);
             this.flpLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.flpLateral.Location = new System.Drawing.Point(0, 136);
             this.flpLateral.Name = "flpLateral";
@@ -92,8 +96,8 @@
             // 
             // btnPersonal
             // 
-            this.btnPersonal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(41)))), ((int)(((byte)(36)))));
-            this.btnPersonal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(157)))), ((int)(((byte)(16)))));
+            this.btnPersonal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(70)))), ((int)(((byte)(83)))));
+            this.btnPersonal.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnPersonal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPersonal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPersonal.ForeColor = System.Drawing.SystemColors.Window;
@@ -101,14 +105,14 @@
             this.btnPersonal.Name = "btnPersonal";
             this.btnPersonal.Size = new System.Drawing.Size(194, 51);
             this.btnPersonal.TabIndex = 0;
-            this.btnPersonal.Text = "Personal";
+            this.btnPersonal.Text = "Nómina";
             this.btnPersonal.UseVisualStyleBackColor = false;
             this.btnPersonal.Click += new System.EventHandler(this.btnPersonal_Click);
             // 
             // btnPuestos
             // 
-            this.btnPuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(41)))), ((int)(((byte)(36)))));
-            this.btnPuestos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(177)))), ((int)(((byte)(69)))));
+            this.btnPuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(70)))), ((int)(((byte)(83)))));
+            this.btnPuestos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnPuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPuestos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPuestos.ForeColor = System.Drawing.SystemColors.Window;
@@ -122,8 +126,8 @@
             // 
             // btnLiquidaciones
             // 
-            this.btnLiquidaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(41)))), ((int)(((byte)(36)))));
-            this.btnLiquidaciones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(177)))), ((int)(((byte)(69)))));
+            this.btnLiquidaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(70)))), ((int)(((byte)(83)))));
+            this.btnLiquidaciones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnLiquidaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLiquidaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLiquidaciones.ForeColor = System.Drawing.SystemColors.Window;
@@ -135,9 +139,40 @@
             this.btnLiquidaciones.UseVisualStyleBackColor = false;
             this.btnLiquidaciones.Click += new System.EventHandler(this.btnLiquidaciones_Click);
             // 
+            // btnNuevaL
+            // 
+            this.btnNuevaL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(224)))), ((int)(((byte)(254)))));
+            this.btnNuevaL.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnNuevaL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevaL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaL.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnNuevaL.Location = new System.Drawing.Point(3, 174);
+            this.btnNuevaL.Name = "btnNuevaL";
+            this.btnNuevaL.Size = new System.Drawing.Size(194, 51);
+            this.btnNuevaL.TabIndex = 3;
+            this.btnNuevaL.Text = "Generar Nueva";
+            this.btnNuevaL.UseVisualStyleBackColor = false;
+            this.btnNuevaL.Click += new System.EventHandler(this.btnNuevaL_Click);
+            // 
+            // btnVerL
+            // 
+            this.btnVerL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(224)))), ((int)(((byte)(254)))));
+            this.btnVerL.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVerL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerL.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.btnVerL.Location = new System.Drawing.Point(3, 231);
+            this.btnVerL.Name = "btnVerL";
+            this.btnVerL.Size = new System.Drawing.Size(194, 51);
+            this.btnVerL.TabIndex = 4;
+            this.btnVerL.Text = "Ver Liquidaciones";
+            this.btnVerL.UseVisualStyleBackColor = false;
+            this.btnVerL.Click += new System.EventHandler(this.btnVerL_Click);
+            // 
             // panelPrincipal
             // 
             this.panelPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelPrincipal.AutoScroll = true;
             this.panelPrincipal.BackColor = System.Drawing.SystemColors.Window;
             this.panelPrincipal.Location = new System.Drawing.Point(239, 142);
             this.panelPrincipal.Name = "panelPrincipal";
@@ -146,7 +181,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(75)))), ((int)(((byte)(35)))));
+            this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(200, 830);
@@ -158,6 +193,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
             this.label1.Location = new System.Drawing.Point(1095, 12);
@@ -202,5 +238,7 @@
         private System.Windows.Forms.Button btnPuestos;
         private System.Windows.Forms.Button btnLiquidaciones;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnNuevaL;
+        private System.Windows.Forms.Button btnVerL;
     }
 }

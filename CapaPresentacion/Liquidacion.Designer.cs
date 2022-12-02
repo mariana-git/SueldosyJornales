@@ -49,17 +49,25 @@
             this.txtExtras = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSueldo = new System.Windows.Forms.TextBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDenominacion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBruto = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDias = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.panelTop = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -69,28 +77,16 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panelDatos = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtIdLiquidacion = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel8.SuspendLayout();
             this.panelDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,18 +279,6 @@
             this.txtSueldo.Size = new System.Drawing.Size(184, 26);
             this.txtSueldo.TabIndex = 39;
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(75)))), ((int)(((byte)(35)))));
-            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnEliminar.Location = new System.Drawing.Point(19, 20);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(144, 47);
-            this.btnEliminar.TabIndex = 37;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -349,23 +333,10 @@
             this.txtDias.Size = new System.Drawing.Size(184, 26);
             this.txtDias.TabIndex = 26;
             // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnGuardar.Location = new System.Drawing.Point(169, 20);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(152, 47);
-            this.btnGuardar.TabIndex = 28;
-            this.btnGuardar.Text = "Modificar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            // 
             // panelTop
             // 
-            this.panelTop.BackColor = System.Drawing.SystemColors.Window;
+            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(210)))), ((int)(((byte)(255)))));
             this.panelTop.Controls.Add(this.label23);
-            this.panelTop.Controls.Add(this.txtIdLiquidacion);
             this.panelTop.Controls.Add(this.label21);
             this.panelTop.Controls.Add(this.panel9);
             this.panelTop.Controls.Add(this.label19);
@@ -382,29 +353,125 @@
             this.panelTop.Size = new System.Drawing.Size(684, 123);
             this.panelTop.TabIndex = 62;
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Bahnschrift", 14.25F);
+            this.label23.Location = new System.Drawing.Point(505, 62);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(45, 23);
+            this.label23.TabIndex = 73;
+            this.label23.Text = "Nro.";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(490, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(163, 19);
+            this.label21.TabIndex = 71;
+            this.label21.Text = "RECIBO DE HABERES";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel9.Location = new System.Drawing.Point(481, 5);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(3, 120);
+            this.panel9.TabIndex = 66;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(178, 49);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(232, 18);
+            this.label19.TabIndex = 70;
+            this.label19.Text = "Uspallata 85 - Ciudad Autonoma Buenos Aires";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(178, 83);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(231, 18);
+            this.label18.TabIndex = 69;
+            this.label18.Text = "www.tuempresa.com - info@tuempresa.com";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(178, 67);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(111, 18);
+            this.label17.TabIndex = 68;
+            this.label17.Text = "CUIT  34-99903208-9";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(177, 21);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(145, 23);
+            this.label16.TabIndex = 66;
+            this.label16.Text = "Tu Empresa S.A.";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Bahnschrift", 12.75F);
+            this.label14.Location = new System.Drawing.Point(4, 20);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(154, 21);
+            this.label14.TabIndex = 67;
+            this.label14.Text = "Sueldos y Jornales";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(8, 44);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
+            this.pictureBox1.Size = new System.Drawing.Size(149, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 66;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.Black;
+            this.panel12.Location = new System.Drawing.Point(2, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(685, 5);
+            this.panel12.TabIndex = 65;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel2.Location = new System.Drawing.Point(164, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(3, 120);
+            this.panel2.TabIndex = 65;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Info;
-            this.button1.Location = new System.Drawing.Point(327, 20);
+            this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 47);
+            this.button1.Size = new System.Drawing.Size(684, 90);
             this.button1.TabIndex = 38;
             this.button1.Text = "Imprimir";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.InfoText;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.Info;
-            this.button2.Location = new System.Drawing.Point(485, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 47);
-            this.button2.TabIndex = 39;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -473,10 +540,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.SystemColors.Window;
-            this.panel8.Controls.Add(this.button2);
-            this.panel8.Controls.Add(this.btnEliminar);
             this.panel8.Controls.Add(this.button1);
-            this.panel8.Controls.Add(this.btnGuardar);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel8.Location = new System.Drawing.Point(0, 781);
             this.panel8.Name = "panel8";
@@ -531,157 +595,6 @@
             this.panelDatos.Size = new System.Drawing.Size(684, 658);
             this.panelDatos.TabIndex = 65;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel2.Location = new System.Drawing.Point(164, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 120);
-            this.panel2.TabIndex = 65;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.Black;
-            this.panel10.Location = new System.Drawing.Point(0, -7);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(685, 10);
-            this.panel10.TabIndex = 63;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.Black;
-            this.panel11.Location = new System.Drawing.Point(2, 650);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(680, 5);
-            this.panel11.TabIndex = 64;
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.Black;
-            this.panel12.Location = new System.Drawing.Point(2, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(685, 5);
-            this.panel12.TabIndex = 65;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Bahnschrift", 12.75F);
-            this.label14.Location = new System.Drawing.Point(4, 20);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(154, 21);
-            this.label14.TabIndex = 67;
-            this.label14.Text = "Sueldos y Jornales";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(8, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
-            this.pictureBox1.Size = new System.Drawing.Size(149, 55);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 66;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(177, 21);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(145, 23);
-            this.label16.TabIndex = 66;
-            this.label16.Text = "Tu Empresa S.A.";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(178, 67);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(111, 18);
-            this.label17.TabIndex = 68;
-            this.label17.Text = "CUIT  34-99903208-9";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(178, 83);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(231, 18);
-            this.label18.TabIndex = 69;
-            this.label18.Text = "www.tuempresa.com - info@tuempresa.com";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(178, 49);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(232, 18);
-            this.label19.TabIndex = 70;
-            this.label19.Text = "Uspallata 85 - Ciudad Autonoma Buenos Aires";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(522, 502);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(129, 95);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 66;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(539, 600);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(96, 16);
-            this.label20.TabIndex = 71;
-            this.label20.Text = "Firma del Empelador";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panel9.Location = new System.Drawing.Point(481, 5);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(3, 120);
-            this.panel9.TabIndex = 66;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(490, 25);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(163, 19);
-            this.label21.TabIndex = 71;
-            this.label21.Text = "RECIBO DE HABERES";
-            // 
-            // txtIdLiquidacion
-            // 
-            this.txtIdLiquidacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIdLiquidacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdLiquidacion.Location = new System.Drawing.Point(572, 46);
-            this.txtIdLiquidacion.Name = "txtIdLiquidacion";
-            this.txtIdLiquidacion.Size = new System.Drawing.Size(100, 19);
-            this.txtIdLiquidacion.TabIndex = 72;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Bahnschrift", 14.25F);
-            this.label23.Location = new System.Drawing.Point(505, 62);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(45, 23);
-            this.label23.TabIndex = 73;
-            this.label23.Text = "Nro.";
-            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
@@ -702,6 +615,42 @@
             this.label22.TabIndex = 72;
             this.label22.Text = "Son pesos:";
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Bahnschrift Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(539, 600);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(96, 16);
+            this.label20.TabIndex = 71;
+            this.label20.Text = "Firma del Empelador";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(522, 502);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(129, 95);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 66;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.Black;
+            this.panel11.Location = new System.Drawing.Point(2, 650);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(680, 5);
+            this.panel11.TabIndex = 64;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.Black;
+            this.panel10.Location = new System.Drawing.Point(0, -7);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(685, 10);
+            this.panel10.TabIndex = 63;
+            // 
             // Liquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -714,10 +663,10 @@
             this.ShowIcon = false;
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panelDatos.ResumeLayout(false);
             this.panelDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -744,16 +693,13 @@
         private System.Windows.Forms.TextBox txtExtras;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSueldo;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDenominacion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBruto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDias;
-        private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Panel panelTop;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -768,7 +714,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox txtIdLiquidacion;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label19;

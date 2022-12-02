@@ -17,6 +17,8 @@ namespace CapaPresentacion
         public Index()
         {
             InitializeComponent();
+            btnVerL.Visible = false;
+            btnNuevaL.Visible = false;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -37,17 +39,43 @@ namespace CapaPresentacion
 
         private void btnPersonal_Click(object sender, EventArgs e)
         {
+            btnVerL.Visible = false;
+            btnNuevaL.Visible = false;
             AbrirUC(new ControlesDeUsuario.UC_Personal());
         }
 
         private void btnPuestos_Click(object sender, EventArgs e)
         {
+            btnVerL.Visible = false;
+            btnNuevaL.Visible = false;
             AbrirUC(new ControlesDeUsuario.UC_Puestos());
         }
 
         private void btnLiquidaciones_Click(object sender, EventArgs e)
         {
-            AbrirUC(new ControlesDeUsuario.UC_Liquidaciones());
+            if (btnNuevaL.Visible) btnNuevaL.Visible = false;
+            if (btnVerL.Visible) btnVerL.Visible = false;
+            else
+            {
+                btnVerL.Visible = true;
+                btnNuevaL.Visible = true;
+            }
+        }
+
+        private void btnVerL_Click(object sender, EventArgs e)
+        {
+
+            btnVerL.Visible = false;
+            btnNuevaL.Visible = false;
+            AbrirUC(new ControlesDeUsuario.UC_VerLiquidaciones());
+        }
+
+        private void btnNuevaL_Click(object sender, EventArgs e)
+        {
+            btnVerL.Visible = false;
+            btnNuevaL.Visible = false;
+
+            AbrirUC(new ControlesDeUsuario.UC_GenerarLiquidacion());
         }
     }
 }
