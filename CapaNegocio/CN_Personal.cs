@@ -26,25 +26,43 @@ namespace CapaNegocio
             }
             else
             {
-                if (int.TryParse(dato, out int legajo))
+               if (long.TryParse(dato, out long cuil))
                 {
-                    tabla = objetoCD.Buscar("", 0,legajo);
-                }
-                else if (long.TryParse(dato, out long cuil))
-                {
-                    tabla = objetoCD.Buscar("", cuil,0);
+                    tabla = objetoCD.Buscar("", cuil,"");
                 }
                 else 
-                tabla = objetoCD.Buscar(dato, 0,0);
+                tabla = objetoCD.Buscar(dato, 0,dato);
                 return tabla;
             }
             
         }
 
+        public DataTable MostrarPersonalActivo(string dato)
+        {
+
+
+            if (dato == "")
+            {
+                tabla = objetoCD.MostrarActivos();
+                return tabla;
+            }
+            else
+            {
+                if (long.TryParse(dato, out long cuil))
+                {
+                    tabla = objetoCD.BuscarActivo("", cuil, "");
+                }
+                else
+                    tabla = objetoCD.BuscarActivo(dato, 0, dato);
+                return tabla;
+            }
+
+        }
+
         public void InsertarPersonal(string nombre, string apellido, string cuil, string ingreso, object puesto, bool activo)
         {
 
-            objetoCD.Insertar(nombre,apellido,Convert.ToInt64(cuil),ingreso,Convert.ToInt32(puesto),activo);
+            objetoCD.Insertar(nombre,apellido,Convert.ToInt64(cuil), ingreso,Convert.ToInt32(puesto),activo);
     }
 
         public void EditarPersonal(string nombre, string apellido, string cuil, string ingreso, object puesto, bool activo,string id)

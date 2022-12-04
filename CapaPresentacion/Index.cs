@@ -19,6 +19,7 @@ namespace CapaPresentacion
             InitializeComponent();
             btnVerL.Visible = false;
             btnNuevaL.Visible = false;
+            timer1.Enabled = true;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -76,6 +77,12 @@ namespace CapaPresentacion
             btnNuevaL.Visible = false;
 
             AbrirUC(new ControlesDeUsuario.UC_GenerarLiquidacion());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
+            lblFecha.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

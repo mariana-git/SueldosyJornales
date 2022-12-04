@@ -20,7 +20,7 @@ namespace CapaPresentacion.ControlesDeUsuario
         public UC_Personal()
         {
             InitializeComponent();
-            MostrarPersonal("");
+            MostrarPersonalActivo("");
             MostrarPuestos();
         }
         #endregion
@@ -31,12 +31,35 @@ namespace CapaPresentacion.ControlesDeUsuario
             dgvPersonal.DataSource = null;
             dgvPersonal.Columns.Clear();
             CN_Personal PersonalCN = new CN_Personal();
-            dgvPersonal.DataSource = PersonalCN.MostrarPersonal(busqueda.Text);
-            OpcionesDgv();
-            BotonEliminar();
-            dgvPersonal.Columns["Id"].Visible = false;
-            dgvPersonal.Columns["PuestoId"].Visible = false;
-            limpiarForm();
+            dgvPersonal.DataSource = PersonalCN.MostrarPersonal(busqueda.Text.Trim());
+            if (dgvPersonal != null)
+            {
+                OpcionesDgv();
+                BotonEliminar();
+                dgvPersonal.Columns["Id"].Visible = false;
+                dgvPersonal.Columns["PuestoId"].Visible = false;
+                btnExportar.Enabled = true;
+                limpiarForm();
+            }
+           
+        }
+
+        private void MostrarPersonalActivo(string dato)
+        {
+            dgvPersonal.DataSource = null;
+            dgvPersonal.Columns.Clear();
+            CN_Personal PersonalCN = new CN_Personal();
+            dgvPersonal.DataSource = PersonalCN.MostrarPersonalActivo(dato);
+            if (dgvPersonal != null)
+            {
+                OpcionesDgv();
+                BotonEliminar();
+                dgvPersonal.Columns["Id"].Visible = false;
+                dgvPersonal.Columns["PuestoId"].Visible = false;
+
+                btnExportar.Enabled = true;
+                limpiarForm();
+            }
         }
 
         private void MostrarPuestos()
@@ -57,7 +80,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.HeaderText = "Eliminar";
             columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             columnaBorrar.ToolTipText = "Borrar Registros";
-            dgvPersonal.Columns.Insert(9, columnaBorrar);
+            dgvPersonal.Columns.Insert(0, columnaBorrar);
 
         }
 
@@ -67,7 +90,9 @@ namespace CapaPresentacion.ControlesDeUsuario
             txtApellido.Clear();
             txtCuil.Text = "";
             cmbPuestos.SelectedIndex = -1;
-            cbxActivo.CheckState = CheckState.Unchecked;
+            cbxActivo.CheckState = CheckState.Checked;
+            cbxActivos.CheckState = CheckState.Checked;
+
             gbx.Enabled = false;
             btnEliminar.Visible = false;
         }
@@ -96,7 +121,6 @@ namespace CapaPresentacion.ControlesDeUsuario
             if (char.IsDigit(e.KeyChar)) e.Handled = false;
             else e.Handled = true;
         }
-
 
         #endregion
 
@@ -161,16 +185,24 @@ namespace CapaPresentacion.ControlesDeUsuario
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             Editar = false;
-            MostrarPersonal("");
+            limpiarForm();
             gbx.Enabled = true;
+            dgvPersonal.DataSource = null;
+            dgvPersonal.Columns.Clear();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            MostrarPersonal(busqueda.Text.Trim());
+            if ((cbxActivos.Checked))
+            {
+                MostrarPersonalActivo(busqueda.Text.Trim());
+            }
+            else
+            {
+                MostrarPersonal(busqueda.Text.Trim());
+            }
         }
         
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("Eliminar registro de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
@@ -189,7 +221,11 @@ namespace CapaPresentacion.ControlesDeUsuario
             }
         }
 
-        #endregion
-
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            Exportar.ExportarExcel(dgvPersonal);
+        }
     }
+    #endregion
+
 }

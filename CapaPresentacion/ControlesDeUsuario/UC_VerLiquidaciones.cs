@@ -1,13 +1,8 @@
 ﻿using CapaNegocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace CapaPresentacion.ControlesDeUsuario
 {
@@ -18,10 +13,10 @@ namespace CapaPresentacion.ControlesDeUsuario
         private bool Editar = false;
         string busqueda = "";
         string periodo = "";
-        string mes = "";
-        string tipo = "";
         string idperiodo = "";
-        CN_Liquidaciones LiquidacionesCN = new CN_Liquidaciones();
+        //string mes = "";
+        //string tipo = "";
+
         #endregion
 
         #region CONSTRUCTOR
@@ -37,50 +32,33 @@ namespace CapaPresentacion.ControlesDeUsuario
         #endregion
 
         #region METODOS
-        private void txtHs_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar) | char.IsControl(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
-        }
-        private void txtSueldo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar) | char.IsControl(e.KeyChar) | char.ToString(e.KeyChar) == ",") e.Handled = false;
-            else e.Handled = true;
-        }
-        private void txtExtras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar) | char.IsControl(e.KeyChar) | char.ToString(e.KeyChar) == ",") e.Handled = false;
-            else e.Handled = true;
-        }
 
         private void MostrarLiquidaciones()
         {
             CN_Liquidaciones PuestosCN = new CN_Liquidaciones();
             dgvLiquidaciones.DataSource = null;
             dgvLiquidaciones.Columns.Clear();
-            dgvLiquidaciones.DataSource = PuestosCN.MostrarLiquidaciones("","");
-            OpcionesDgv();
-            BotonEliminar();
-            dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
-            dgvLiquidaciones.Columns["Jubilación"].Visible = false; 
-            dgvLiquidaciones.Columns["ObraSocial"].Visible = false;
-            dgvLiquidaciones.Columns["PAMI"].Visible = false;
-            dgvLiquidaciones.Columns["Bonos"].Visible = false;
-            dgvLiquidaciones.Columns["HsExtra"].Visible = false;
-            dgvLiquidaciones.Columns["Anticipos"].Visible = false;
+            dgvLiquidaciones.DataSource = PuestosCN.MostrarLiquidaciones("",""); 
+            if (dgvLiquidaciones != null)
+            {
+                OpcionesDgv();
+                BotonEliminar();
+                dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
+                dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
+                btnExportar.Enabled = true;
+            }
 
 
             limpiarForm();
         }
 
-
         private void limpiarForm()
         {
-            foreach(Control controlGrup in gbx.Controls)
+            foreach(System.Windows.Forms.Control controlGrup in gbx.Controls)
                     {
                 if (controlGrup is TextBox) controlGrup.Text = "";
                 if (controlGrup is ComboBox) ((ComboBox)controlGrup).SelectedIndex = -1;
-                if (controlGrup is CheckBox) ((CheckBox)controlGrup).Checked = false;
+                if (controlGrup is System.Windows.Forms.CheckBox) ((System.Windows.Forms.CheckBox)controlGrup).Checked = false;
             }
             //cmbMes.SelectedIndex = -1;
             //cmbTipo.SelectedIndex = -1;
@@ -89,7 +67,9 @@ namespace CapaPresentacion.ControlesDeUsuario
             btnEliminar.Visible = false;
             btnGuardar.Visible = false;
             btnRecibo.Visible = false;
+            btnExportar.Enabled = false;
         }
+
         private void MostrarPeriodos()
         {
             CN_Liquidaciones LiquidacionesCN1 = new CN_Liquidaciones();
@@ -98,7 +78,9 @@ namespace CapaPresentacion.ControlesDeUsuario
             cmbPeriodo.DisplayMember = "Descripcion";
             cmbPeriodo.SelectedIndex = -1;
         }
-
+        /// <summary>
+        /// TODO habilitar estos metodos para permitir ABM de anios, meses y categorias
+        /// </summary>
         //private void MostrarMeses()
         //{
         //    CN_Liquidaciones LiquidacionesCN1 = new CN_Liquidaciones();
@@ -134,10 +116,10 @@ namespace CapaPresentacion.ControlesDeUsuario
             dgvLiquidaciones.AllowUserToAddRows = false; //desactiva la ultima fila 
             dgvLiquidaciones.MultiSelect = false; //desactiva la seleccion multiple
             dgvLiquidaciones.RowTemplate.Height = 35;// altura de row
-            dgvLiquidaciones.DefaultCellStyle.Font = new Font("Roboto", 13, GraphicsUnit.Pixel);// fijo font
-            dgvLiquidaciones.DefaultCellStyle.SelectionBackColor = Color.Black; //color seleccion de row
-            dgvLiquidaciones.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;// color font de seleccion de row
-            dgvLiquidaciones.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvLiquidaciones.DefaultCellStyle.Font = new System.Drawing.Font("Roboto", 13, GraphicsUnit.Pixel);// fijo font
+            dgvLiquidaciones.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Black; //color seleccion de row
+            dgvLiquidaciones.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;// color font de seleccion de row
+            //dgvLiquidaciones.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
         }
@@ -153,12 +135,73 @@ namespace CapaPresentacion.ControlesDeUsuario
             columnaBorrar.HeaderText = "Eliminar";
             columnaBorrar.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             columnaBorrar.ToolTipText = "Borrar Registros";
-            dgvLiquidaciones.Columns.Insert(18, columnaBorrar);
+            dgvLiquidaciones.Columns.Insert(0, columnaBorrar);
 
         }
 
+        private void EditarLiquidacion()
+        {
+            if (txtBruto.Text !="" && txtExtras.Text != "" && txtBono.Text != "" && txtAnticipos.Text != "")
+            {
+                decimal bruto = Convert.ToDecimal(txtBruto.Text);
+                decimal extras = Convert.ToDecimal(txtExtras.Text);
+                decimal bono = Convert.ToDecimal(txtBono.Text);
+                decimal anticipo = Convert.ToDecimal(txtAnticipos.Text);
+                decimal sumabruto = (bruto + extras + bono);
+                decimal jubilacion = (sumabruto * 11 / 100);
+                decimal PAMI = (sumabruto * 3 / 100);
+                decimal OS = (sumabruto * 3 / 100);
+                txtJubilacion.Text = jubilacion.ToString();
+                txtPAMI.Text = PAMI.ToString();
+                txtOS.Text = OS.ToString();
+                txtNeto.Text = (sumabruto - jubilacion - PAMI - OS - anticipo).ToString();
+            }
+            else if (txtBruto.Text != "" && txtBono.Text != "" && txtAnticipos.Text != "")
+            {
+                decimal bruto = Convert.ToDecimal(txtBruto.Text);
+                decimal bono = Convert.ToDecimal(txtBono.Text);
+                decimal anticipo = Convert.ToDecimal(txtAnticipos.Text);
+                decimal sumabruto = (bruto  + bono);
+                decimal jubilacion = (sumabruto * 11 / 100);
+                decimal PAMI = (sumabruto * 3 / 100);
+                decimal OS = (sumabruto * 3 / 100);
+                txtJubilacion.Text = jubilacion.ToString();
+                txtPAMI.Text = PAMI.ToString();
+                txtOS.Text = OS.ToString();
+                txtNeto.Text = (sumabruto - jubilacion - PAMI - OS - anticipo).ToString();
+            }
+            else if (txtBruto.Text != "" && txtAnticipos.Text != "")
+            {
+                decimal bruto = Convert.ToDecimal(txtBruto.Text);
+                decimal anticipo = Convert.ToDecimal(txtAnticipos.Text);
+                decimal sumabruto = bruto;
+                decimal jubilacion = (sumabruto * 11 / 100);
+                decimal PAMI = (sumabruto * 3 / 100);
+                decimal OS = (sumabruto * 3 / 100);
+                txtJubilacion.Text = jubilacion.ToString();
+                txtPAMI.Text = PAMI.ToString();
+                txtOS.Text = OS.ToString();
+                txtNeto.Text = (sumabruto - jubilacion - PAMI - OS - anticipo).ToString();
+            }
+
+        }
+
+        private void PermitirDecimales(object sender, KeyPressEventArgs e, char cSymbol)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != cSymbol)
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == cSymbol && (sender as TextBox).Text.IndexOf(cSymbol) > -1)
+            {
+                e.Handled = true;
+            }
+        }
 
         #endregion
+
+        #region BOTONES
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -256,8 +299,8 @@ namespace CapaPresentacion.ControlesDeUsuario
 
         private void btnRecibo_Click(object sender, EventArgs e)
         {
-            Liquidacion formulario2 = new Liquidacion(idLiquidacion);
-            formulario2.Show();
+            Recibo recibo = new Recibo(idLiquidacion);
+            recibo.Show();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -267,11 +310,58 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
             periodo = cmbPeriodo.SelectedValue.ToString();
             }
-            limpiarForm();
-            dgvLiquidaciones.DataSource = null;
+            CN_Liquidaciones LiquidacionesCN = new CN_Liquidaciones();
             dgvLiquidaciones.Columns.Clear();
             dgvLiquidaciones.DataSource = LiquidacionesCN.MostrarLiquidaciones(busqueda, periodo);
-            OpcionesDgv();
+            if(dgvLiquidaciones!= null)
+            {
+                OpcionesDgv();
+                BotonEliminar();
+                dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
+                dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
+                btnExportar.Enabled = true;
+            }
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            Exportar.ExportarExcel(dgvLiquidaciones);
+        }
+
+        #endregion
+
+        #region EVENTOS
+
+        private void txtExtras_TextChanged(object sender, EventArgs e)
+        {
+            EditarLiquidacion();
+        }       
+
+        private void txtBono_TextChanged(object sender, EventArgs e)
+        {
+            EditarLiquidacion();
+        }
+
+        private void txtAnticipos_TextChanged(object sender, EventArgs e)
+        {
+            EditarLiquidacion();
+        }
+
+
+        private void txtExtras_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            PermitirDecimales(sender, e, ',');
+        }
+
+        private void txtBono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PermitirDecimales(sender, e, ',');
+        }
+
+        private void txtAnticipos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            PermitirDecimales(sender, e, ',');
+        }
+        #endregion
     }
 }

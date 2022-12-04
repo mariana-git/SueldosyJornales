@@ -13,14 +13,11 @@ namespace CapaNegocio
         private CD_Liquidaciones objetoCD = new CD_Liquidaciones();
         DataTable tabla = new DataTable();
         DataTable tabla2 = new DataTable();
-        DataTable tabla3 = new DataTable();
         int idperiodo = 0;
 
-
+        
         public DataTable MostrarLiquidaciones(string dato, string periodo)
         {
-
-
             if (dato == "" && periodo=="")
             {
                 tabla = objetoCD.Mostrar();
@@ -31,31 +28,23 @@ namespace CapaNegocio
 
                 if (dato != "" && periodo == "")
                 {
-                    if (int.TryParse(dato, out int legajo))
+                   if (long.TryParse(dato, out long cuil))
                     {
-                        tabla = objetoCD.Buscar("", 0, legajo);
-                    }
-                    else if (long.TryParse(dato, out long cuil))
-                    {
-                        tabla = objetoCD.Buscar("", cuil, 0);
+                        tabla = objetoCD.Buscar("", cuil, "");
                     }
                     else
-                        tabla = objetoCD.Buscar(dato, 0, 0);
+                        tabla = objetoCD.Buscar(dato, 0, dato);
                 }
                 else if(dato != "" && periodo != "")
                 {
                     int idP=Convert.ToInt32(periodo);
 
-                    if (int.TryParse(dato, out int legajo))
+                    if (long.TryParse(dato, out long cuil))
                     {
-                        tabla2 = objetoCD.Buscar("", 0, legajo);
-                    }
-                    else if (long.TryParse(dato, out long cuil))
-                    {
-                        tabla2 = objetoCD.Buscar("", cuil, 0);
+                        tabla2 = objetoCD.Buscar("", cuil, "");
                     }
                     else
-                        tabla2 = objetoCD.Buscar(dato, 0, 0);
+                        tabla2 = objetoCD.Buscar(dato, 0, dato);
 
                     tabla = tabla2.Select("IdLiquidacion =" + idP).CopyToDataTable();
                 }
@@ -70,7 +59,12 @@ namespace CapaNegocio
 
         }
 
-       
+        public DataTable MostrarLiquidacionId(string dato)
+        {
+            tabla = objetoCD.BuscarxID(Convert.ToInt32(dato));
+            return tabla;          
+
+        }
 
         public DataTable InsertarLiquidaciones(string anio, string mes, string tipo)
         {
@@ -82,7 +76,7 @@ namespace CapaNegocio
             {
 
                 int idPersonal = Convert.ToInt32(row["Id"]);
-                decimal bruto = Convert.ToDecimal(row["SueldoBruto"]);
+                decimal bruto = Convert.ToDecimal(row["Bruto"]);
                 decimal jubilacion = bruto * 11 / 100;
                 decimal PAMI = bruto * 3 / 100;
                 decimal os = bruto * 3 / 100;
@@ -93,7 +87,6 @@ namespace CapaNegocio
             return tabla;
 
         }
-
 
         public void EditarLiquidaciones(string idliq, string extras, string anticipos, string bonos, string bruto)
         {

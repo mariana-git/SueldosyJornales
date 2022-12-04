@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Personal));
             this.cmbPuestos = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxActivo = new System.Windows.Forms.CheckBox();
@@ -48,7 +49,9 @@
             this.busqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.paneltop = new System.Windows.Forms.Panel();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbxActivos = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonal)).BeginInit();
@@ -80,6 +83,8 @@
             // cbxActivo
             // 
             this.cbxActivo.AutoSize = true;
+            this.cbxActivo.Checked = true;
+            this.cbxActivo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbxActivo.Location = new System.Drawing.Point(149, 262);
             this.cbxActivo.Margin = new System.Windows.Forms.Padding(2);
             this.cbxActivo.Name = "cbxActivo";
@@ -255,11 +260,11 @@
             this.busqueda.AcceptsReturn = true;
             this.busqueda.BackColor = System.Drawing.SystemColors.Window;
             this.busqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.busqueda.Location = new System.Drawing.Point(5, 12);
+            this.busqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.75F);
+            this.busqueda.Location = new System.Drawing.Point(104, 12);
             this.busqueda.Margin = new System.Windows.Forms.Padding(2);
             this.busqueda.Name = "busqueda";
-            this.busqueda.Size = new System.Drawing.Size(574, 24);
+            this.busqueda.Size = new System.Drawing.Size(393, 23);
             this.busqueda.TabIndex = 37;
             this.busqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -279,6 +284,7 @@
             // 
             // paneltop
             // 
+            this.paneltop.Controls.Add(this.btnExportar);
             this.paneltop.Controls.Add(this.panel2);
             this.paneltop.Controls.Add(this.btnNuevo);
             this.paneltop.Controls.Add(this.btnBuscar);
@@ -289,15 +295,44 @@
             this.paneltop.Size = new System.Drawing.Size(894, 60);
             this.paneltop.TabIndex = 39;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportar.BackgroundImage")));
+            this.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExportar.Enabled = false;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnExportar.Location = new System.Drawing.Point(163, 4);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(76, 49);
+            this.btnExportar.TabIndex = 40;
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cbxActivos);
             this.panel2.Controls.Add(this.busqueda);
-            this.panel2.Location = new System.Drawing.Point(163, 5);
+            this.panel2.Location = new System.Drawing.Point(245, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(583, 48);
+            this.panel2.Size = new System.Drawing.Size(501, 48);
             this.panel2.TabIndex = 37;
+            // 
+            // cbxActivos
+            // 
+            this.cbxActivos.AutoSize = true;
+            this.cbxActivos.Checked = true;
+            this.cbxActivos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxActivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cbxActivos.Location = new System.Drawing.Point(20, 12);
+            this.cbxActivos.Name = "cbxActivos";
+            this.cbxActivos.Size = new System.Drawing.Size(79, 24);
+            this.cbxActivos.TabIndex = 38;
+            this.cbxActivos.Text = "Activos";
+            this.cbxActivos.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -365,5 +400,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.CheckBox cbxActivos;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

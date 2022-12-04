@@ -36,25 +36,25 @@ namespace CapaNegocio
             
         }
 
-        public void InsertarPuestos(string puesto, string diassemana, string hssemanales, string sueldo, string extras)
+        public void InsertarPuestos(string puesto, string diassemana, string hssemanales, string sueldo)
         {
-            if (decimal.TryParse(sueldo, out decimal sueldod) && decimal.TryParse(extras, out decimal extrasd))
+            if (decimal.TryParse(sueldo, out decimal sueldod))
             {
-                objetoCD.Insertar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod, extrasd);
+                objetoCD.Insertar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod);
             }
             else
-                throw new Exception($" {sueldo} o {extras} no válido.");
+                throw new Exception($" {sueldo} no válido.");
 
         }
 
-        public void EditarPuestos(string puesto, string diassemana, string hssemanales, string sueldo, string extras, string id)
+        public void EditarPuestos(string puesto, string diassemana, string hssemanales, string sueldo,  string id)
         {
-            if (decimal.TryParse(sueldo, out decimal sueldod) && decimal.TryParse(extras, out decimal extrasd))
+            if (decimal.TryParse(sueldo, out decimal sueldod))
             {
-                objetoCD.Editar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod, extrasd, Convert.ToInt32(id));
+                objetoCD.Editar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod,  Convert.ToInt32(id));
             }
             else
-                throw new Exception($" {sueldo} o {extras} no válido.");
+                throw new Exception($" {sueldo} no válido.");
 
         }
 

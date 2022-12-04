@@ -99,7 +99,6 @@ namespace CapaPresentacion.ControlesDeUsuario
             txtHs.Text = dgvPuestos.CurrentRow.Cells["HsSemanales"].Value.ToString();
             txtDias.Text = dgvPuestos.CurrentRow.Cells["DiasSemana"].Value.ToString();
             txtSueldo.Text = dgvPuestos.CurrentRow.Cells["SueldoBruto"].Value.ToString();
-            txtExtras.Text = dgvPuestos.CurrentRow.Cells["ValorHoraExtra"].Value.ToString();
             idPuesto = dgvPuestos.CurrentRow.Cells["Id"].Value.ToString();
             gbx.Enabled = true;
 
@@ -145,7 +144,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
                 try
                 {                    
-                    PuestosCN.InsertarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text,txtSueldo.Text,txtExtras.Text);
+                    PuestosCN.InsertarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text,txtSueldo.Text);
                     MessageBox.Show("se inserto correctamente");
                     MostrarPuestos("");
                 }
@@ -159,7 +158,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
                 try
                 {
-                    PuestosCN.EditarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text, txtSueldo.Text, txtExtras.Text, idPuesto);
+                    PuestosCN.EditarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text, txtSueldo.Text, idPuesto);
                     MessageBox.Show("se edito correctamente");
                     MostrarPuestos("");
 

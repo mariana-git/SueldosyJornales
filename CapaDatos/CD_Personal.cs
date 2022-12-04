@@ -41,7 +41,7 @@ namespace CapaDatos
 
         }
 
-        public DataTable Buscar(string apellido, long cuil, int legajo)
+        public DataTable Buscar(string apellido, long cuil, string legajo)
         {
 
             comando.Connection = conexion.AbrirConexion();
@@ -59,6 +59,23 @@ namespace CapaDatos
 
         }
 
+        public DataTable BuscarActivo(string apellido, long cuil, string legajo)
+        {
+
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "BuscarPersonalActivo";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@apellido", apellido);
+            comando.Parameters.AddWithValue("@cuil", cuil);
+            comando.Parameters.AddWithValue("@legajo", legajo);
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            conexion.CerrarConexion();
+
+            comando.Parameters.Clear();
+            return tabla;
+
+        }
         public void Insertar(string nombre,string apellido,long cuil,string ingreso, int puesto, bool activo ) {
             //PROCEDIMNIENTO
             

@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_GenerarLiquidacion));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvLiquidaciones = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.btnGenerarL = new System.Windows.Forms.Button();
             this.gbx = new System.Windows.Forms.GroupBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
@@ -121,6 +123,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExportar);
             this.panel1.Controls.Add(this.btnGenerarL);
             this.panel1.Controls.Add(this.gbx);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -129,6 +132,21 @@
             this.panel1.Size = new System.Drawing.Size(900, 79);
             this.panel1.TabIndex = 46;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportar.BackgroundImage")));
+            this.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExportar.Enabled = false;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnExportar.Location = new System.Drawing.Point(3, 16);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(76, 49);
+            this.btnExportar.TabIndex = 53;
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // btnGenerarL
             // 
             this.btnGenerarL.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -136,9 +154,9 @@
             this.btnGenerarL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnGenerarL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarL.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnGenerarL.Location = new System.Drawing.Point(660, 11);
+            this.btnGenerarL.Location = new System.Drawing.Point(701, 16);
             this.btnGenerarL.Name = "btnGenerarL";
-            this.btnGenerarL.Size = new System.Drawing.Size(234, 61);
+            this.btnGenerarL.Size = new System.Drawing.Size(193, 49);
             this.btnGenerarL.TabIndex = 52;
             this.btnGenerarL.Text = "Generar Liquidación";
             this.btnGenerarL.UseVisualStyleBackColor = false;
@@ -152,9 +170,9 @@
             this.gbx.Controls.Add(this.label1);
             this.gbx.Controls.Add(this.label3);
             this.gbx.Controls.Add(this.label2);
-            this.gbx.Location = new System.Drawing.Point(3, 3);
+            this.gbx.Location = new System.Drawing.Point(85, 16);
             this.gbx.Name = "gbx";
-            this.gbx.Size = new System.Drawing.Size(651, 70);
+            this.gbx.Size = new System.Drawing.Size(610, 49);
             this.gbx.TabIndex = 52;
             this.gbx.TabStop = false;
             // 
@@ -162,7 +180,7 @@
             // 
             this.cmbTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Location = new System.Drawing.Point(471, 24);
+            this.cmbTipo.Location = new System.Drawing.Point(444, 12);
             this.cmbTipo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(155, 28);
@@ -172,7 +190,7 @@
             // 
             this.cmbMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbMes.FormattingEnabled = true;
-            this.cmbMes.Location = new System.Drawing.Point(192, 24);
+            this.cmbMes.Location = new System.Drawing.Point(178, 11);
             this.cmbMes.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(104, 28);
@@ -182,7 +200,7 @@
             // 
             this.cmbAnio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbAnio.FormattingEnabled = true;
-            this.cmbAnio.Location = new System.Drawing.Point(44, 25);
+            this.cmbAnio.Location = new System.Drawing.Point(44, 12);
             this.cmbAnio.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAnio.Name = "cmbAnio";
             this.cmbAnio.Size = new System.Drawing.Size(81, 28);
@@ -192,7 +210,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(144, 28);
+            this.label1.Location = new System.Drawing.Point(130, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 20);
             this.label1.TabIndex = 46;
@@ -202,7 +220,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(317, 27);
+            this.label3.Location = new System.Drawing.Point(290, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 20);
             this.label3.TabIndex = 48;
@@ -212,7 +230,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(4, 27);
+            this.label2.Location = new System.Drawing.Point(4, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 20);
             this.label2.TabIndex = 47;
@@ -294,6 +312,8 @@
             this.txtBono.Size = new System.Drawing.Size(184, 26);
             this.txtBono.TabIndex = 75;
             this.txtBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBono.TextChanged += new System.EventHandler(this.txtBono_TextChanged);
+            this.txtBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBono_KeyPress);
             // 
             // txtPAMI
             // 
@@ -447,6 +467,8 @@
             this.txtAnticipos.Size = new System.Drawing.Size(184, 26);
             this.txtAnticipos.TabIndex = 59;
             this.txtAnticipos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAnticipos.TextChanged += new System.EventHandler(this.txtAnticipos_TextChanged);
+            this.txtAnticipos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnticipos_KeyPress);
             // 
             // label12
             // 
@@ -563,6 +585,8 @@
             this.txtExtras.Size = new System.Drawing.Size(184, 26);
             this.txtExtras.TabIndex = 41;
             this.txtExtras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtras.TextChanged += new System.EventHandler(this.txtExtras_TextChanged);
+            this.txtExtras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtras_KeyPress);
             // 
             // btnEliminar
             // 
@@ -688,5 +712,6 @@
         private System.Windows.Forms.TextBox txtBruto;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.DataGridView dgvLiquidaciones;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

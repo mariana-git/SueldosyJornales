@@ -46,7 +46,7 @@ namespace CapaDatos
 
         }
 
-        public void Insertar(string puesto, string diassemana, int hssemanales, decimal sueldo, decimal extras)
+        public void Insertar(string puesto, string diassemana, int hssemanales, decimal sueldo)
         {
             //PROCEDIMNIENTO
 
@@ -57,7 +57,6 @@ namespace CapaDatos
             comando.Parameters.AddWithValue("@diasSemana", diassemana);
             comando.Parameters.AddWithValue("@hsSemanales", hssemanales);
             comando.Parameters.AddWithValue("@bruto", sueldo);
-            comando.Parameters.AddWithValue("@extras", extras);
 
             comando.ExecuteNonQuery();
 
@@ -65,7 +64,7 @@ namespace CapaDatos
 
         }
 
-        public void Editar(string puesto, string diassemana, int hssemanales, decimal sueldo, decimal extras, int id)
+        public void Editar(string puesto, string diassemana, int hssemanales, decimal sueldo, int id)
         {
 
             comando.Connection = conexion.AbrirConexion();
@@ -75,7 +74,6 @@ namespace CapaDatos
             comando.Parameters.AddWithValue("@diasSemana", diassemana);
             comando.Parameters.AddWithValue("@hsSemanales", hssemanales);
             comando.Parameters.AddWithValue("@bruto", sueldo);
-            comando.Parameters.AddWithValue("@extras", extras);
             comando.Parameters.AddWithValue("@id", id);
 
             comando.ExecuteNonQuery();

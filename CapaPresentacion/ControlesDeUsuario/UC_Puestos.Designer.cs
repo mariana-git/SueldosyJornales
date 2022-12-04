@@ -45,8 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtDias = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtExtras = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPuestos)).BeginInit();
             this.paneltop.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -135,8 +133,6 @@
             // gbx
             // 
             this.gbx.BackColor = System.Drawing.SystemColors.Window;
-            this.gbx.Controls.Add(this.label5);
-            this.gbx.Controls.Add(this.txtExtras);
             this.gbx.Controls.Add(this.label4);
             this.gbx.Controls.Add(this.txtSueldo);
             this.gbx.Controls.Add(this.btnEliminar);
@@ -160,7 +156,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(35, 181);
+            this.label4.Location = new System.Drawing.Point(45, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 20);
             this.label4.TabIndex = 38;
@@ -168,7 +164,7 @@
             // 
             // txtSueldo
             // 
-            this.txtSueldo.Location = new System.Drawing.Point(147, 178);
+            this.txtSueldo.Location = new System.Drawing.Point(157, 224);
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.Size = new System.Drawing.Size(184, 26);
             this.txtSueldo.TabIndex = 39;
@@ -191,7 +187,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 81);
+            this.label1.Location = new System.Drawing.Point(36, 127);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 20);
             this.label1.TabIndex = 21;
@@ -199,7 +195,7 @@
             // 
             // txtDenominacion
             // 
-            this.txtDenominacion.Location = new System.Drawing.Point(147, 78);
+            this.txtDenominacion.Location = new System.Drawing.Point(157, 124);
             this.txtDenominacion.Name = "txtDenominacion";
             this.txtDenominacion.Size = new System.Drawing.Size(184, 26);
             this.txtDenominacion.TabIndex = 22;
@@ -208,7 +204,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(24, 115);
+            this.label2.Location = new System.Drawing.Point(34, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 20);
             this.label2.TabIndex = 23;
@@ -216,7 +212,7 @@
             // 
             // txtHs
             // 
-            this.txtHs.Location = new System.Drawing.Point(147, 112);
+            this.txtHs.Location = new System.Drawing.Point(157, 158);
             this.txtHs.Name = "txtHs";
             this.txtHs.Size = new System.Drawing.Size(184, 26);
             this.txtHs.TabIndex = 24;
@@ -226,7 +222,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(32, 149);
+            this.label3.Location = new System.Drawing.Point(42, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 25;
@@ -234,7 +230,7 @@
             // 
             // txtDias
             // 
-            this.txtDias.Location = new System.Drawing.Point(147, 146);
+            this.txtDias.Location = new System.Drawing.Point(157, 192);
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(184, 26);
             this.txtDias.TabIndex = 26;
@@ -251,24 +247,6 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label5.Location = new System.Drawing.Point(24, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 20);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "Valor Hs. Extra:";
-            // 
-            // txtExtras
-            // 
-            this.txtExtras.Location = new System.Drawing.Point(147, 210);
-            this.txtExtras.Name = "txtExtras";
-            this.txtExtras.Size = new System.Drawing.Size(184, 26);
-            this.txtExtras.TabIndex = 41;
-            this.txtExtras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtras_KeyPress);
             // 
             // UC_Puestos
             // 
@@ -308,7 +286,5 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSueldo;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtExtras;
     }
 }

@@ -16,8 +16,6 @@ namespace CapaDatos
         SqlDataReader leer;
         DataTable tabla = new DataTable();
         SqlCommand comando = new SqlCommand();
-        int resultado = new int();
-        object id = new object();
 
         public DataTable Mostrar()
         {
@@ -32,7 +30,7 @@ namespace CapaDatos
 
         }
 
-        public DataTable Buscar(string apellido, long cuil, int legajo)
+        public DataTable Buscar(string apellido, long cuil, string legajo)
         {
 
             comando.Connection = conexion.AbrirConexion();
@@ -55,6 +53,20 @@ namespace CapaDatos
             comando.CommandText = "BuscarLiquidacionxPeriodo";
             comando.CommandType = CommandType.StoredProcedure;
             comando.Parameters.AddWithValue("@idperiodo", idperiodo);
+            leer = comando.ExecuteReader();
+            tabla.Load(leer);
+            conexion.CerrarConexion();
+
+            comando.Parameters.Clear();
+            return tabla;
+        }
+        public DataTable BuscarxID(int id)
+        {
+
+            comando.Connection = conexion.AbrirConexion();
+            comando.CommandText = "BuscarLiquidacionId";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.AddWithValue("@id", id);
             leer = comando.ExecuteReader();
             tabla.Load(leer);
             conexion.CerrarConexion();

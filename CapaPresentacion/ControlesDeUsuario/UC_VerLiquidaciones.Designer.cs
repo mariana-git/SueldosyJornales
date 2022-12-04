@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_VerLiquidaciones));
             this.dgvLiquidaciones = new System.Windows.Forms.DataGridView();
             this.paneltop = new System.Windows.Forms.Panel();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -86,16 +88,17 @@
             this.dgvLiquidaciones.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvLiquidaciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvLiquidaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLiquidaciones.Location = new System.Drawing.Point(0, 81);
+            this.dgvLiquidaciones.Location = new System.Drawing.Point(0, 89);
             this.dgvLiquidaciones.Name = "dgvLiquidaciones";
             this.dgvLiquidaciones.RowHeadersWidth = 51;
-            this.dgvLiquidaciones.Size = new System.Drawing.Size(900, 714);
+            this.dgvLiquidaciones.Size = new System.Drawing.Size(894, 706);
             this.dgvLiquidaciones.TabIndex = 43;
             this.dgvLiquidaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLiquidaciones_CellContentClick_1);
             // 
             // paneltop
             // 
             this.paneltop.BackColor = System.Drawing.Color.White;
+            this.paneltop.Controls.Add(this.btnExportar);
             this.paneltop.Controls.Add(this.panel2);
             this.paneltop.Controls.Add(this.btnBuscar);
             this.paneltop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -105,6 +108,21 @@
             this.paneltop.Size = new System.Drawing.Size(900, 84);
             this.paneltop.TabIndex = 45;
             // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExportar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportar.BackgroundImage")));
+            this.btnExportar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExportar.Enabled = false;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnExportar.Location = new System.Drawing.Point(0, 17);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(76, 49);
+            this.btnExportar.TabIndex = 39;
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
@@ -112,16 +130,17 @@
             this.panel2.Controls.Add(this.cmbPeriodo);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.txtbusqueda);
-            this.panel2.Location = new System.Drawing.Point(3, 17);
+            this.panel2.Location = new System.Drawing.Point(94, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(743, 49);
+            this.panel2.Size = new System.Drawing.Size(652, 49);
             this.panel2.TabIndex = 37;
             // 
             // cmbPeriodo
             // 
+            this.cmbPeriodo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.Location = new System.Drawing.Point(102, 11);
+            this.cmbPeriodo.Location = new System.Drawing.Point(97, 10);
             this.cmbPeriodo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(284, 28);
@@ -129,9 +148,10 @@
             // 
             // label18
             // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(30, 14);
+            this.label18.Location = new System.Drawing.Point(25, 13);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(67, 20);
             this.label18.TabIndex = 79;
@@ -140,13 +160,14 @@
             // txtbusqueda
             // 
             this.txtbusqueda.AcceptsReturn = true;
+            this.txtbusqueda.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtbusqueda.BackColor = System.Drawing.SystemColors.Window;
             this.txtbusqueda.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtbusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbusqueda.Location = new System.Drawing.Point(411, 14);
+            this.txtbusqueda.Location = new System.Drawing.Point(418, 12);
             this.txtbusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.txtbusqueda.Name = "txtbusqueda";
-            this.txtbusqueda.Size = new System.Drawing.Size(316, 24);
+            this.txtbusqueda.Size = new System.Drawing.Size(217, 24);
             this.txtbusqueda.TabIndex = 37;
             this.txtbusqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -156,7 +177,7 @@
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.btnBuscar.Location = new System.Drawing.Point(752, 17);
+            this.btnBuscar.Location = new System.Drawing.Point(758, 17);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(136, 49);
             this.btnBuscar.TabIndex = 38;
@@ -268,6 +289,8 @@
             this.txtExtras.Size = new System.Drawing.Size(184, 26);
             this.txtExtras.TabIndex = 41;
             this.txtExtras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtras.TextChanged += new System.EventHandler(this.txtExtras_TextChanged);
+            this.txtExtras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtras_KeyPress_1);
             // 
             // label5
             // 
@@ -379,6 +402,8 @@
             this.txtBono.Size = new System.Drawing.Size(184, 26);
             this.txtBono.TabIndex = 75;
             this.txtBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtBono.TextChanged += new System.EventHandler(this.txtBono_TextChanged);
+            this.txtBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBono_KeyPress);
             // 
             // txtPAMI
             // 
@@ -492,6 +517,8 @@
             this.txtAnticipos.Size = new System.Drawing.Size(184, 26);
             this.txtAnticipos.TabIndex = 59;
             this.txtAnticipos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtAnticipos.TextChanged += new System.EventHandler(this.txtAnticipos_TextChanged);
+            this.txtAnticipos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnticipos_KeyPress);
             // 
             // label12
             // 
@@ -646,5 +673,6 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ComboBox cmbPeriodo;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnExportar;
     }
 }
