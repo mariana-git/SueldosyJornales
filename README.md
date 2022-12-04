@@ -18,6 +18,11 @@ Todo el trabajo deberá encontrarse desarrollado bajo los conceptos de POO y el 
 
 ## 🔵 Requerimientos Específicos
 
+### 🔹 Modulo Login: 
+- Bloqueo a los 3 intentos
+- Mensaje de error al introducir datos incorrectos
+- Permisos de Usuario
+
 ### 🔹 Modulo personal. ABM: 
 Datos Personales. Baja Lógica.
  
@@ -35,10 +40,15 @@ Remuneraciones a pagar.
 ### 🔹DER ![DER](https://img.shields.io/badge/DER--green) 
 ![DER Sueldos drawio](https://user-images.githubusercontent.com/88113403/205382672-bd74af25-21d1-4d0c-b0fe-7f791caef927.png)
 
+
 ### 🔹 Base de Datos ![DB](https://img.shields.io/badge/SQL-Server-red) 
 ![bd](https://user-images.githubusercontent.com/88113403/205380140-7327f71b-1633-4111-a25f-9de43e8df982.png)
+![pantalla7](https://user-images.githubusercontent.com/88113403/205516199-7f4c0e6e-5780-4c2b-bb76-0f4e2a2c7598.png)
 
 ## 🔵 Pantallas
+### 🔹 Login
+![pantalla6](https://user-images.githubusercontent.com/88113403/205516220-7ef6fc60-5206-4637-8826-40d5fc99f28c.png)
+
 ### 🔹 Nómina
 ![pant1](https://user-images.githubusercontent.com/88113403/205506638-e16b14c6-009c-4be8-9698-fe233b36f7d4.png)
 
