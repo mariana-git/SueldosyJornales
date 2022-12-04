@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+﻿using CapaPresentacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -185,108 +185,126 @@ namespace CapaPresentacion.ControlesDeUsuario
         #region BOTONES
         private void btnGenerarL_Click_1(object sender, EventArgs e)
         {
-
-            if (btnGenerarL.Text == "Nueva Liquidación")
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-LIQUIDACIONES")))
             {
-                limpiarForm();
-                btnEliminar.Visible = false;
-                btnGuardar.Visible = false;
-                dgvLiquidaciones.Columns.Clear();
-            }
-            else
-            {
-                if (cmbAnio.SelectedIndex.Equals(-1) || cmbMes.SelectedIndex.Equals(-1) || cmbTipo.SelectedIndex.Equals(-1))
-                    MessageBox.Show("Debe completar los campos de la LIQUIDACION");
+                if (btnGenerarL.Text == "Nueva Liquidación")
+                {
+                    limpiarForm();
+                    btnEliminar.Visible = false;
+                    btnGuardar.Visible = false;
+                    dgvLiquidaciones.Columns.Clear();
+                }
                 else
                 {
-                    gbx.Enabled = false;
-                    CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
-                    dgvLiquidaciones.DataSource = null;
-                    dgvLiquidaciones.Columns.Clear();
-                    dgvLiquidaciones.DataSource  = LiquidacionCN.InsertarLiquidaciones(cmbAnio.SelectedValue.ToString(), cmbMes.SelectedValue.ToString(), cmbTipo.SelectedValue.ToString());
-
-                    if (dgvLiquidaciones != null)
+                    if (cmbAnio.SelectedIndex.Equals(-1) || cmbMes.SelectedIndex.Equals(-1) || cmbTipo.SelectedIndex.Equals(-1))
+                        MessageBox.Show("Debe completar los campos de la LIQUIDACION");
+                    else
                     {
-                        OpcionesDgv();
-                        BotonEliminar();
-                        dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
-                        dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
-                        btnExportar.Enabled = true;
+                        gbx.Enabled = false;
+                        CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
+                        dgvLiquidaciones.DataSource = null;
+                        dgvLiquidaciones.Columns.Clear();
+                        dgvLiquidaciones.DataSource = LiquidacionCN.InsertarLiquidaciones(cmbAnio.SelectedValue.ToString(), cmbMes.SelectedValue.ToString(), cmbTipo.SelectedValue.ToString());
+
+                        if (dgvLiquidaciones != null)
+                        {
+                            OpcionesDgv();
+                            BotonEliminar();
+                            dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
+                            dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
+                            btnExportar.Enabled = true;
+                        }
+
                     }
-                   
                 }
+
             }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+
+           
 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Eliminar la liquidacion de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
-              "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
-            if (resultado == DialogResult.OK)
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-LIQUIDACIONES")))
             {
-                idLiquidacion = dgvLiquidaciones.CurrentRow.Cells["Id"].Value.ToString();
-                LiquidacionCN.EliminarLiquidacion(idLiquidacion);
-                MessageBox.Show("Eliminado correctamente");
-                MostrarLiquidaciones("");
-                gbx2.Enabled=false;
+                DialogResult resultado = MessageBox.Show("Eliminar la liquidacion de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
+              "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
+                if (resultado == DialogResult.OK)
+                {
+                    idLiquidacion = dgvLiquidaciones.CurrentRow.Cells["Id"].Value.ToString();
+                    LiquidacionCN.EliminarLiquidacion(idLiquidacion);
+                    MessageBox.Show("Eliminado correctamente");
+                    MostrarLiquidaciones("");
+                    gbx2.Enabled = false;
+                }
+
             }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CN_Liquidaciones LiquidacionesCN = new CN_Liquidaciones();
-            //INSERTAR
-            if (Editar == false)
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-LIQUIDACIONES")))
             {
-                try
+                CN_Liquidaciones LiquidacionesCN = new CN_Liquidaciones();
+                //INSERTAR
+                if (Editar == false)
                 {
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("no se pudo insertar los datos por: " + ex);
-
-                }
-            }
-            //EDITAR
-            if (Editar == true)
-            {
-                try
-                {
-                    resultado = dgvLiquidaciones.CurrentRow.Cells["IdPeriodo"].Value.ToString();
-                    CN_Liquidaciones LiquidacionCN3 = new CN_Liquidaciones();
-
-                    LiquidacionCN3.EditarLiquidaciones(idLiquidacion, txtExtras.Text, txtAnticipos.Text, txtBono.Text, txtBruto.Text).ToString();
-                    MessageBox.Show("Se editó correctamente");
-                    CN_Liquidaciones LiquidacionCN2 = new CN_Liquidaciones();
-
-                    dgvLiquidaciones.DataSource = null;
-                    dgvLiquidaciones.Columns.Clear();
-                    dgvLiquidaciones.DataSource = LiquidacionCN2.MostrarLiquidaciones("",resultado);
-
-                    if (dgvLiquidaciones != null)
+                    try
                     {
-                        OpcionesDgv();
-                        BotonEliminar();
-                        dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
-                        dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
-                        btnExportar.Enabled = true;
-                        limpiarForm();
-                        btnEliminar.Visible = false;
-                        btnGuardar.Visible = false;
                     }
-                    
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo insertar los datos por: " + ex);
 
-
+                    }
                 }
-                catch (Exception ex)
+                //EDITAR
+                if (Editar == true)
                 {
-                    MessageBox.Show("no se pudo editar los datos por: " + ex);
+                    try
+                    {
+                        resultado = dgvLiquidaciones.CurrentRow.Cells["IdPeriodo"].Value.ToString();
+                        CN_Liquidaciones LiquidacionCN3 = new CN_Liquidaciones();
 
+                        LiquidacionCN3.EditarLiquidaciones(idLiquidacion, txtExtras.Text, txtAnticipos.Text, txtBono.Text, txtBruto.Text).ToString();
+                        MessageBox.Show("Se editó correctamente");
+                        CN_Liquidaciones LiquidacionCN2 = new CN_Liquidaciones();
+
+                        dgvLiquidaciones.DataSource = null;
+                        dgvLiquidaciones.Columns.Clear();
+                        dgvLiquidaciones.DataSource = LiquidacionCN2.MostrarLiquidaciones("", resultado);
+
+                        if (dgvLiquidaciones != null)
+                        {
+                            OpcionesDgv();
+                            BotonEliminar();
+                            dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
+                            dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
+                            btnExportar.Enabled = true;
+                            limpiarForm();
+                            btnEliminar.Visible = false;
+                            btnGuardar.Visible = false;
+                        }
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo editar los datos por: " + ex);
+
+                    }
                 }
+                gbx2.Enabled = false;
+
             }
-            gbx2.Enabled= false;    
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+              
         }
 
         private void btnExportar_Click(object sender, EventArgs e)

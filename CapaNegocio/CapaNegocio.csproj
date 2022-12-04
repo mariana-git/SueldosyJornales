@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,16 +43,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CN_Liquidaciones.cs" />
+    <Compile Include="CN_Login.cs" />
     <Compile Include="CN_Periodos.cs" />
     <Compile Include="CN_Personal.cs" />
     <Compile Include="CN_Puestos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
       <Project>{360aa80e-d3d9-482c-b50d-b106676e4ae7}</Project>
       <Name>CapaDatos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CapaSoporte\CapaSoporte.csproj">
+      <Project>{bec2b6b5-65b0-4457-b7e1-9b74fc3c7973}</Project>
+      <Name>CapaSoporte</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

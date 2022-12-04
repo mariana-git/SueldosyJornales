@@ -184,7 +184,7 @@
             this.cmbTipo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(155, 28);
-            this.cmbTipo.TabIndex = 50;
+            this.cmbTipo.TabIndex = 3;
             // 
             // cmbMes
             // 
@@ -194,7 +194,7 @@
             this.cmbMes.Margin = new System.Windows.Forms.Padding(2);
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(104, 28);
-            this.cmbMes.TabIndex = 45;
+            this.cmbMes.TabIndex = 2;
             // 
             // cmbAnio
             // 
@@ -204,7 +204,7 @@
             this.cmbAnio.Margin = new System.Windows.Forms.Padding(2);
             this.cmbAnio.Name = "cmbAnio";
             this.cmbAnio.Size = new System.Drawing.Size(81, 28);
-            this.cmbAnio.TabIndex = 49;
+            this.cmbAnio.TabIndex = 1;
             // 
             // label1
             // 
@@ -310,7 +310,7 @@
             this.txtBono.Location = new System.Drawing.Point(145, 424);
             this.txtBono.Name = "txtBono";
             this.txtBono.Size = new System.Drawing.Size(184, 26);
-            this.txtBono.TabIndex = 75;
+            this.txtBono.TabIndex = 5;
             this.txtBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBono.TextChanged += new System.EventHandler(this.txtBono_TextChanged);
             this.txtBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBono_KeyPress);
@@ -416,7 +416,7 @@
             this.txtAnio.Name = "txtAnio";
             this.txtAnio.ReadOnly = true;
             this.txtAnio.Size = new System.Drawing.Size(50, 26);
-            this.txtAnio.TabIndex = 67;
+            this.txtAnio.TabIndex = 44;
             this.txtAnio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label16
@@ -465,7 +465,7 @@
             this.txtAnticipos.Location = new System.Drawing.Point(144, 456);
             this.txtAnticipos.Name = "txtAnticipos";
             this.txtAnticipos.Size = new System.Drawing.Size(184, 26);
-            this.txtAnticipos.TabIndex = 59;
+            this.txtAnticipos.TabIndex = 6;
             this.txtAnticipos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAnticipos.TextChanged += new System.EventHandler(this.txtAnticipos_TextChanged);
             this.txtAnticipos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnticipos_KeyPress);
@@ -583,7 +583,7 @@
             this.txtExtras.Location = new System.Drawing.Point(144, 391);
             this.txtExtras.Name = "txtExtras";
             this.txtExtras.Size = new System.Drawing.Size(184, 26);
-            this.txtExtras.TabIndex = 41;
+            this.txtExtras.TabIndex = 4;
             this.txtExtras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtExtras.TextChanged += new System.EventHandler(this.txtExtras_TextChanged);
             this.txtExtras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtras_KeyPress);
@@ -596,7 +596,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(6, 729);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(372, 59);
-            this.btnEliminar.TabIndex = 37;
+            this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Visible = false;
@@ -640,7 +640,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(3, 668);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(372, 61);
-            this.btnGuardar.TabIndex = 28;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;

@@ -33,7 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblActiveUSer = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,7 +60,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.lblHora);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblActiveUSer);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -76,11 +76,12 @@
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblFecha.Location = new System.Drawing.Point(1280, 82);
+            this.lblFecha.Location = new System.Drawing.Point(1202, 111);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblFecha.Size = new System.Drawing.Size(0, 20);
+            this.lblFecha.Size = new System.Drawing.Size(239, 20);
             this.lblFecha.TabIndex = 6;
+            this.lblFecha.Text = "domingo 3 de diciembre de 2022";
             // 
             // lblHora
             // 
@@ -88,33 +89,35 @@
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblHora.Location = new System.Drawing.Point(1445, 106);
+            this.lblHora.Location = new System.Drawing.Point(1447, 111);
             this.lblHora.Name = "lblHora";
             this.lblHora.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblHora.Size = new System.Drawing.Size(0, 20);
+            this.lblHora.Size = new System.Drawing.Size(71, 20);
             this.lblHora.TabIndex = 5;
+            this.lblHora.Text = "12:00:00";
             // 
-            // label4
+            // lblActiveUSer
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label4.Location = new System.Drawing.Point(1363, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 20);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Administrador";
+            this.lblActiveUSer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblActiveUSer.AutoSize = true;
+            this.lblActiveUSer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActiveUSer.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblActiveUSer.Location = new System.Drawing.Point(1428, 61);
+            this.lblActiveUSer.Name = "lblActiveUSer";
+            this.lblActiveUSer.Size = new System.Drawing.Size(57, 20);
+            this.lblActiveUSer.TabIndex = 4;
+            this.lblActiveUSer.Text = "admin";
+            this.lblActiveUSer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1491, 20);
+            this.pictureBox2.Location = new System.Drawing.Point(1432, 20);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Padding = new System.Windows.Forms.Padding(3);
-            this.pictureBox2.Size = new System.Drawing.Size(25, 33);
+            this.pictureBox2.Size = new System.Drawing.Size(40, 44);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -310,7 +313,7 @@
         private System.Windows.Forms.Button btnVerL;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblActiveUSer;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
     }

@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+﻿using CapaPresentacion;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -119,62 +119,82 @@ namespace CapaPresentacion.ControlesDeUsuario
         #region BOTONES
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Eliminar puesto  \r\n" + txtDenominacion.Text.ToUpper()+ "\r\n de manera permanente?",
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-PUESTOS")))
+            {
+
+                DialogResult resultado = MessageBox.Show("Eliminar puesto  \r\n" + txtDenominacion.Text.ToUpper() + "\r\n de manera permanente?",
             "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (resultado == DialogResult.OK)
+                {
+                    CN_Puestos PuestosCN = new CN_Puestos();
+                    //idPuesto = dgvPuestos.CurrentRow.Cells["Id"].Value.ToString();
+                    PuestosCN.EliminarPuestos(idPuesto);
+                    MessageBox.Show("Eliminado correctamente");
+                    MostrarPuestos("");
+                }
+                else
+                {
+                    MostrarPuestos("");
+                }
+            }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
             
-            if (resultado == DialogResult.OK)
-            {
-                CN_Puestos PuestosCN = new CN_Puestos();
-                //idPuesto = dgvPuestos.CurrentRow.Cells["Id"].Value.ToString();
-                PuestosCN.EliminarPuestos(idPuesto);
-                MessageBox.Show("Eliminado correctamente");
-                MostrarPuestos("");
-            }
-            else
-            {
-                MostrarPuestos("");
-            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CN_Puestos PuestosCN = new CN_Puestos();
-            //INSERTAR
-            if (Editar == false)
-            {
-                try
-                {                    
-                    PuestosCN.InsertarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text,txtSueldo.Text);
-                    MessageBox.Show("se inserto correctamente");
-                    MostrarPuestos("");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("no se pudo insertar los datos por: " + ex);
-                }
-            }
-            //EDITAR
-            if (Editar == true)
-            {
-                try
-                {
-                    PuestosCN.EditarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text, txtSueldo.Text, idPuesto);
-                    MessageBox.Show("se edito correctamente");
-                    MostrarPuestos("");
 
-                }
-                catch (Exception ex)
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-PUESTOS")))
+            {
+
+                CN_Puestos PuestosCN = new CN_Puestos();
+                //INSERTAR
+                if (Editar == false)
                 {
-                    MessageBox.Show("no se pudo editar los datos por: " + ex);
+                    try
+                    {
+                        PuestosCN.InsertarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text, txtSueldo.Text);
+                        MessageBox.Show("se inserto correctamente");
+                        MostrarPuestos("");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo insertar los datos por: " + ex);
+                    }
+                }
+                //EDITAR
+                if (Editar == true)
+                {
+                    try
+                    {
+                        PuestosCN.EditarPuestos(txtDenominacion.Text, txtDias.Text, txtHs.Text, txtSueldo.Text, idPuesto);
+                        MessageBox.Show("se edito correctamente");
+                        MostrarPuestos("");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo editar los datos por: " + ex);
+                    }
                 }
             }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+
+           
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            MostrarPuestos("");
-            Editar = false;
-            gbx.Enabled = true;
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-PUESTOS")))
+            {
+                MostrarPuestos("");
+                Editar = false;
+                gbx.Enabled = true;
+            }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+
+           
         }
        
         private void btnBuscar_Click(object sender, EventArgs e)

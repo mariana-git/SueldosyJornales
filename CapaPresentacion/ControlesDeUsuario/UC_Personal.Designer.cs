@@ -68,7 +68,7 @@
             this.cmbPuestos.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPuestos.Name = "cmbPuestos";
             this.cmbPuestos.Size = new System.Drawing.Size(184, 28);
-            this.cmbPuestos.TabIndex = 35;
+            this.cmbPuestos.TabIndex = 6;
             // 
             // label5
             // 
@@ -89,7 +89,7 @@
             this.cbxActivo.Margin = new System.Windows.Forms.Padding(2);
             this.cbxActivo.Name = "cbxActivo";
             this.cbxActivo.Size = new System.Drawing.Size(15, 14);
-            this.cbxActivo.TabIndex = 32;
+            this.cbxActivo.TabIndex = 7;
             this.cbxActivo.UseVisualStyleBackColor = true;
             // 
             // label6
@@ -110,7 +110,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(6, 305);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(372, 61);
-            this.btnGuardar.TabIndex = 28;
+            this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Visible = false;
@@ -131,7 +131,7 @@
             this.txtCuil.Location = new System.Drawing.Point(147, 146);
             this.txtCuil.Name = "txtCuil";
             this.txtCuil.Size = new System.Drawing.Size(184, 26);
-            this.txtCuil.TabIndex = 26;
+            this.txtCuil.TabIndex = 4;
             this.txtCuil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuil_KeyPress);
             // 
             // label3
@@ -149,7 +149,7 @@
             this.txtApellido.Location = new System.Drawing.Point(147, 112);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(184, 26);
-            this.txtApellido.TabIndex = 24;
+            this.txtApellido.TabIndex = 3;
             // 
             // label2
             // 
@@ -166,7 +166,7 @@
             this.txtNombre.Location = new System.Drawing.Point(147, 78);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(184, 26);
-            this.txtNombre.TabIndex = 22;
+            this.txtNombre.TabIndex = 2;
             // 
             // label1
             // 
@@ -225,7 +225,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(6, 364);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(372, 59);
-            this.btnEliminar.TabIndex = 37;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -238,7 +238,7 @@
             this.dtpIngreso.MinDate = new System.DateTime(1922, 1, 1, 0, 0, 0, 0);
             this.dtpIngreso.Name = "dtpIngreso";
             this.dtpIngreso.Size = new System.Drawing.Size(184, 26);
-            this.dtpIngreso.TabIndex = 36;
+            this.dtpIngreso.TabIndex = 5;
             // 
             // btnNuevo
             // 
@@ -266,7 +266,7 @@
             this.busqueda.Margin = new System.Windows.Forms.Padding(2);
             this.busqueda.Name = "busqueda";
             this.busqueda.Size = new System.Drawing.Size(393, 23);
-            this.busqueda.TabIndex = 37;
+            this.busqueda.TabIndex = 1;
             this.busqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnBuscar

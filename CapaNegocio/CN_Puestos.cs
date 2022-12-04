@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using CapaDatos;
 
-namespace CapaNegocio
+namespace CapaPresentacion
 {
     public class CN_Puestos
     {
@@ -38,6 +38,7 @@ namespace CapaNegocio
 
         public void InsertarPuestos(string puesto, string diassemana, string hssemanales, string sueldo)
         {
+
             if (decimal.TryParse(sueldo, out decimal sueldod))
             {
                 objetoCD.Insertar(puesto, diassemana, Convert.ToInt32(hssemanales), sueldod);

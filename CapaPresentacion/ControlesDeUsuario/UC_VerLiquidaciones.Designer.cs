@@ -144,7 +144,7 @@
             this.cmbPeriodo.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(284, 28);
-            this.cmbPeriodo.TabIndex = 41;
+            this.cmbPeriodo.TabIndex = 1;
             // 
             // label18
             // 
@@ -168,7 +168,7 @@
             this.txtbusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(217, 24);
-            this.txtbusqueda.TabIndex = 37;
+            this.txtbusqueda.TabIndex = 2;
             this.txtbusqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnBuscar
@@ -180,7 +180,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(758, 17);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(136, 49);
-            this.btnBuscar.TabIndex = 38;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -193,7 +193,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(6, 617);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(372, 61);
-            this.btnGuardar.TabIndex = 28;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -256,7 +256,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(6, 729);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(372, 59);
-            this.btnEliminar.TabIndex = 37;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -287,7 +287,7 @@
             this.txtExtras.Location = new System.Drawing.Point(139, 357);
             this.txtExtras.Name = "txtExtras";
             this.txtExtras.Size = new System.Drawing.Size(184, 26);
-            this.txtExtras.TabIndex = 41;
+            this.txtExtras.TabIndex = 4;
             this.txtExtras.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtExtras.TextChanged += new System.EventHandler(this.txtExtras_TextChanged);
             this.txtExtras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExtras_KeyPress_1);
@@ -369,7 +369,7 @@
             this.btnRecibo.Location = new System.Drawing.Point(6, 671);
             this.btnRecibo.Name = "btnRecibo";
             this.btnRecibo.Size = new System.Drawing.Size(372, 61);
-            this.btnRecibo.TabIndex = 78;
+            this.btnRecibo.TabIndex = 8;
             this.btnRecibo.Text = "Ver Recibo";
             this.btnRecibo.UseVisualStyleBackColor = false;
             this.btnRecibo.Click += new System.EventHandler(this.btnRecibo_Click);
@@ -400,7 +400,7 @@
             this.txtBono.Location = new System.Drawing.Point(140, 390);
             this.txtBono.Name = "txtBono";
             this.txtBono.Size = new System.Drawing.Size(184, 26);
-            this.txtBono.TabIndex = 75;
+            this.txtBono.TabIndex = 5;
             this.txtBono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBono.TextChanged += new System.EventHandler(this.txtBono_TextChanged);
             this.txtBono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBono_KeyPress);
@@ -515,7 +515,7 @@
             this.txtAnticipos.Location = new System.Drawing.Point(139, 422);
             this.txtAnticipos.Name = "txtAnticipos";
             this.txtAnticipos.Size = new System.Drawing.Size(184, 26);
-            this.txtAnticipos.TabIndex = 59;
+            this.txtAnticipos.TabIndex = 6;
             this.txtAnticipos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtAnticipos.TextChanged += new System.EventHandler(this.txtAnticipos_TextChanged);
             this.txtAnticipos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAnticipos_KeyPress);

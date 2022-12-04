@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+﻿using CapaPresentacion;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -205,53 +205,68 @@ namespace CapaPresentacion.ControlesDeUsuario
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Eliminar la liquidacion de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
-             "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
-            if (resultado == DialogResult.OK)
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-LIQUIDACIONES")))
             {
-                idLiquidacion = dgvLiquidaciones.CurrentRow.Cells["Id"].Value.ToString();
-                LiquidacionCN.EliminarLiquidacion(idLiquidacion);
-                MessageBox.Show("Eliminado correctamente");
-                MostrarLiquidaciones();
+                DialogResult resultado = MessageBox.Show("Eliminar la liquidacion de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
+            "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
+                if (resultado == DialogResult.OK)
+                {
+                    idLiquidacion = dgvLiquidaciones.CurrentRow.Cells["Id"].Value.ToString();
+                    LiquidacionCN.EliminarLiquidacion(idLiquidacion);
+                    MessageBox.Show("Eliminado correctamente");
+                    MostrarLiquidaciones();
+                }
             }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+           
 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CN_Liquidaciones LiquidacionesCN = new CN_Liquidaciones();
-            //INSERTAR
-            if (Editar == false)
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-LIQUIDACIONES")))
             {
-                try
+                CN_Liquidaciones LiquidacionesCN = new CN_Liquidaciones();
+                //INSERTAR
+                if (Editar == false)
                 {
+                    try
+                    {
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo insertar los datos por: " + ex);
+                    }
                 }
-                catch (Exception ex)
+                //EDITAR
+                if (Editar == true)
                 {
-                    MessageBox.Show("no se pudo insertar los datos por: " + ex);
-                }
-            }
-            //EDITAR
-            if (Editar == true)
-            {
-                try
-                {
-                    LiquidacionesCN.EditarLiquidaciones(idLiquidacion, txtExtras.Text, txtAnticipos.Text, txtBono.Text, txtBruto.Text);
-                    MessageBox.Show("se edito correctamente");
-                    MostrarLiquidaciones();
+                    try
+                    {
+                        LiquidacionesCN.EditarLiquidaciones(idLiquidacion, txtExtras.Text, txtAnticipos.Text, txtBono.Text, txtBruto.Text);
+                        MessageBox.Show("se edito correctamente");
+                        MostrarLiquidaciones();
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("no se pudo editar los datos por: " + ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo editar los datos por: " + ex);
+                    }
                 }
             }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            limpiarForm();
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-LIQUIDACIONES")))
+            {
+                limpiarForm();
+            }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+            
         }
 
         private void dgvLiquidaciones_CellContentClick_1(object sender, DataGridViewCellEventArgs e)

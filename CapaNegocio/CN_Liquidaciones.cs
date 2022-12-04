@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaNegocio
+namespace CapaPresentacion
 {
     public class CN_Liquidaciones
     {

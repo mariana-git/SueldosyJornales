@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using CapaDatos;
 
-namespace CapaNegocio
+namespace CapaPresentacion
 {
     public class CN_Periodos
     {

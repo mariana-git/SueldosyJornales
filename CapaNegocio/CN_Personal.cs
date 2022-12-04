@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using CapaDatos;
 using System.Threading;
 
-namespace CapaNegocio
+namespace CapaPresentacion
 {
     public class CN_Personal
     {

@@ -1,25 +1,15 @@
-﻿using CapaNegocio;
-using Spire.Pdf.Graphics;
-using Spire.Pdf;
+﻿using CapaPresentacion;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Contracts;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Printing;
-using System.Drawing.Imaging;
 
 namespace CapaPresentacion
 {
     public partial class Recibo : Form
     {
-        Bitmap memoryImage;
+        private DataTable dt;
+
         public Recibo(string idLiquidacion)
         {
             InitializeComponent();
@@ -29,7 +19,7 @@ namespace CapaPresentacion
 
         private void CargarRecibos(string idLiquidacion) {
             CN_Liquidaciones cN_Liquidaciones = new CN_Liquidaciones();
-            DataTable dt= new DataTable();
+           
 
             dt = cN_Liquidaciones.MostrarLiquidacionId(idLiquidacion);
 

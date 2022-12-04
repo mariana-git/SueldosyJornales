@@ -97,7 +97,7 @@
             this.busqueda.Margin = new System.Windows.Forms.Padding(2);
             this.busqueda.Name = "busqueda";
             this.busqueda.Size = new System.Drawing.Size(574, 24);
-            this.busqueda.TabIndex = 37;
+            this.busqueda.TabIndex = 1;
             this.busqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnNuevo
@@ -167,7 +167,7 @@
             this.txtSueldo.Location = new System.Drawing.Point(157, 224);
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.Size = new System.Drawing.Size(184, 26);
-            this.txtSueldo.TabIndex = 39;
+            this.txtSueldo.TabIndex = 5;
             this.txtSueldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSueldo_KeyPress);
             // 
             // btnEliminar
@@ -178,7 +178,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(6, 353);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(372, 59);
-            this.btnEliminar.TabIndex = 37;
+            this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -198,7 +198,7 @@
             this.txtDenominacion.Location = new System.Drawing.Point(157, 124);
             this.txtDenominacion.Name = "txtDenominacion";
             this.txtDenominacion.Size = new System.Drawing.Size(184, 26);
-            this.txtDenominacion.TabIndex = 22;
+            this.txtDenominacion.TabIndex = 2;
             // 
             // label2
             // 
@@ -215,7 +215,7 @@
             this.txtHs.Location = new System.Drawing.Point(157, 158);
             this.txtHs.Name = "txtHs";
             this.txtHs.Size = new System.Drawing.Size(184, 26);
-            this.txtHs.TabIndex = 24;
+            this.txtHs.TabIndex = 3;
             this.txtHs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHs_KeyPress);
             // 
             // label3
@@ -233,7 +233,7 @@
             this.txtDias.Location = new System.Drawing.Point(157, 192);
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(184, 26);
-            this.txtDias.TabIndex = 26;
+            this.txtDias.TabIndex = 4;
             // 
             // btnGuardar
             // 
@@ -243,7 +243,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(6, 294);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(372, 61);
-            this.btnGuardar.TabIndex = 28;
+            this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);

@@ -1,4 +1,4 @@
-﻿using CapaNegocio;
+﻿using CapaPresentacion;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -116,52 +116,120 @@ namespace CapaPresentacion.ControlesDeUsuario
 
         }
 
-        private void txtCuil_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar)) e.Handled = false;
-            else e.Handled = true;
-        }
 
         #endregion
 
         #region BOTONES
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //INSERTAR
-            if (Editar == false)
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-PERSONAL")))
             {
-                try
-                {
-                    CN_Personal PersonalCN = new CN_Personal();
-                    PersonalCN.InsertarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue.ToString(), cbxActivo.Checked);
-                    MessageBox.Show("se inserto correctamente");
-                    MostrarPersonal("");
 
-                    btnEliminar.Visible = false;
-                    btnGuardar.Visible = false;
+                //INSERTAR
+                if (Editar == false)
+                {
+                    try
+                    {
+                        CN_Personal PersonalCN = new CN_Personal();
+                        PersonalCN.InsertarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue.ToString(), cbxActivo.Checked);
+                        MessageBox.Show("se inserto correctamente");
+                        MostrarPersonal("");
+
+                        btnEliminar.Visible = false;
+                        btnGuardar.Visible = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("no se pudo insertar los datos por: " + ex);
+                    }
                 }
-                catch (Exception ex)
+                //EDITAR
+                if (Editar == true)
+                {
+                    try
+                    {
+                        PersonalCN.EditarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue, cbxActivo.Checked, idPersonal);
+                        MessageBox.Show("se edito correctamente");
+                        MostrarPersonal("");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No se pudo editar los datos por: " + ex);
+                    }
+                }
+            }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+            
+        }
+       
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-PERSONAL")))
             {
-                MessageBox.Show("no se pudo insertar los datos por: " + ex);
+                Editar = false;
+                limpiarForm();
+                gbx.Enabled = true;
+                dgvPersonal.DataSource = null;
+                dgvPersonal.Columns.Clear();
+
+                btnEliminar.Visible = true;
+                btnGuardar.Visible = true;
+            }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+           
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if ((cbxActivos.Checked))
+            {
+                MostrarPersonalActivo(busqueda.Text.Trim());
+            }
+            else
+            {
+                MostrarPersonal(busqueda.Text.Trim());
             }
         }
-            //EDITAR
-            if (Editar == true)
+        
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (LoginCN.Permissions("ADMIN") || (LoginCN.Permissions("AMB-PERSONAL")))
             {
-                try
+
+                DialogResult resultado = MessageBox.Show("Eliminar registro de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
+                   "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                CN_Personal PersonalCN = new CN_Personal();
+                if (resultado == DialogResult.OK)
                 {
-                    PersonalCN.EditarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue, cbxActivo.Checked, idPersonal);
-                    MessageBox.Show("se edito correctamente");
+                    idPersonal = dgvPersonal.CurrentRow.Cells["Id"].Value.ToString();
+                    PersonalCN.EliminarPersonal(idPersonal);
+                    MessageBox.Show("Eliminado correctamente");
                     MostrarPersonal("");
-                    
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("no se pudo editar los datos por: " + ex);
+                    MostrarPersonal("");
                 }
             }
+            else MessageBox.Show("No tiene permisos suficientes", "DENEGADO");
+
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            Exportar.ExportarExcel(dgvPersonal);
+        }
+    
+    #endregion
+
+    #region EVENTOS
+        private void txtCuil_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (char.IsDigit(e.KeyChar)) e.Handled = false;
+        else e.Handled = true;
+    }
         private void dgvPersonal_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //paso los datos al form
@@ -181,58 +249,11 @@ namespace CapaPresentacion.ControlesDeUsuario
             else
             {
                 Editar = true;
-                btnEliminar.Visible= true;
-                btnGuardar.Visible= true;   
+                btnEliminar.Visible = true;
+                btnGuardar.Visible = true;
             }
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            Editar = false;
-            limpiarForm();
-            gbx.Enabled = true;
-            dgvPersonal.DataSource = null;
-            dgvPersonal.Columns.Clear();
-
-            btnEliminar.Visible = true;
-            btnGuardar.Visible = true;
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            if ((cbxActivos.Checked))
-            {
-                MostrarPersonalActivo(busqueda.Text.Trim());
-            }
-            else
-            {
-                MostrarPersonal(busqueda.Text.Trim());
-            }
-        }
-        
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            DialogResult resultado = MessageBox.Show("Eliminar registro de \r\n" + txtNombre.Text.ToUpper() + " " + txtApellido.Text.ToUpper() + "\r\n de manera permanente?",
-               "ATENCION", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            CN_Personal PersonalCN = new CN_Personal();
-            if (resultado == DialogResult.OK)
-            {
-                idPersonal = dgvPersonal.CurrentRow.Cells["Id"].Value.ToString();
-                PersonalCN.EliminarPersonal(idPersonal);
-                MessageBox.Show("Eliminado correctamente");
-                MostrarPersonal("");
-            }
-            else
-            {
-                MostrarPersonal("");
-            }
-        }
-
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            Exportar.ExportarExcel(dgvPersonal);
-        }
+        #endregion
     }
-    #endregion
-
 }

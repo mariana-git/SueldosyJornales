@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,16 @@ namespace CapaPresentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Index());
+            // Application.Run(new Index());
+            Login login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Index());
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }
