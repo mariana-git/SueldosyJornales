@@ -17,6 +17,9 @@ namespace CapaDatos
         DataTable tabla = new DataTable();
         SqlCommand comando = new SqlCommand();
 
+        int resultado = new int();
+        object id = new object();
+
         public DataTable Mostrar()
         {
 
@@ -114,7 +117,7 @@ namespace CapaDatos
             comando.Parameters.Clear();
         }
 
-        public void Editar(int idliquidacion, decimal extras, decimal anticipos, decimal bonos, decimal os, decimal PAMI, decimal jubilacion, decimal neto)
+        public int Editar(int idliquidacion, decimal extras, decimal anticipos, decimal bonos, decimal os, decimal PAMI, decimal jubilacion, decimal neto)
         {
             //PROCEDIMNIENTO
 
@@ -130,9 +133,14 @@ namespace CapaDatos
             comando.Parameters.AddWithValue("@jubilacion", jubilacion);
             comando.Parameters.AddWithValue("@neto", neto);
 
-            comando.ExecuteNonQuery();
+            id = comando.ExecuteScalar();
+            if (id != null)
+            {
+                resultado = Convert.ToInt32(id);
+            }
 
-            comando.Parameters.Clear();
+            conexion.CerrarConexion();
+            return resultado;
         }
 
         public void Eliminar(int id)

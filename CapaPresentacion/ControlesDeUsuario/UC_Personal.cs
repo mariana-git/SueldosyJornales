@@ -136,7 +136,10 @@ namespace CapaPresentacion.ControlesDeUsuario
                     PersonalCN.InsertarPersonal(txtNombre.Text, txtApellido.Text, txtCuil.Text, dtpIngreso.Text, cmbPuestos.SelectedValue.ToString(), cbxActivo.Checked);
                     MessageBox.Show("se inserto correctamente");
                     MostrarPersonal("");
-            }
+
+                    btnEliminar.Visible = false;
+                    btnGuardar.Visible = false;
+                }
                 catch (Exception ex)
             {
                 MessageBox.Show("no se pudo insertar los datos por: " + ex);
@@ -179,6 +182,7 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
                 Editar = true;
                 btnEliminar.Visible= true;
+                btnGuardar.Visible= true;   
             }
         }
 
@@ -189,6 +193,9 @@ namespace CapaPresentacion.ControlesDeUsuario
             gbx.Enabled = true;
             dgvPersonal.DataSource = null;
             dgvPersonal.Columns.Clear();
+
+            btnEliminar.Visible = true;
+            btnGuardar.Visible = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

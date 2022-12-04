@@ -15,6 +15,7 @@ namespace CapaPresentacion.ControlesDeUsuario
     {
         #region ATRIBUTOS
         private string idLiquidacion = null;
+        private string resultado = "";
         private bool Editar = false;
         #endregion
 
@@ -69,6 +70,12 @@ namespace CapaPresentacion.ControlesDeUsuario
         private void limpiarForm()
         {
             foreach (Control controlGrup in gbx.Controls)
+            {
+                if (controlGrup is TextBox) controlGrup.Text = "";
+                if (controlGrup is ComboBox) ((ComboBox)controlGrup).SelectedIndex = -1;
+                if (controlGrup is CheckBox) ((CheckBox)controlGrup).Checked = false;
+            }
+            foreach (Control controlGrup in gbx2.Controls)
             {
                 if (controlGrup is TextBox) controlGrup.Text = "";
                 if (controlGrup is ComboBox) ((ComboBox)controlGrup).SelectedIndex = -1;
@@ -178,9 +185,12 @@ namespace CapaPresentacion.ControlesDeUsuario
         #region BOTONES
         private void btnGenerarL_Click_1(object sender, EventArgs e)
         {
+
             if (btnGenerarL.Text == "Nueva Liquidación")
             {
                 limpiarForm();
+                btnEliminar.Visible = false;
+                btnGuardar.Visible = false;
                 dgvLiquidaciones.Columns.Clear();
             }
             else
@@ -191,6 +201,8 @@ namespace CapaPresentacion.ControlesDeUsuario
                 {
                     gbx.Enabled = false;
                     CN_Liquidaciones LiquidacionCN = new CN_Liquidaciones();
+                    dgvLiquidaciones.DataSource = null;
+                    dgvLiquidaciones.Columns.Clear();
                     dgvLiquidaciones.DataSource  = LiquidacionCN.InsertarLiquidaciones(cmbAnio.SelectedValue.ToString(), cmbMes.SelectedValue.ToString(), cmbTipo.SelectedValue.ToString());
 
                     if (dgvLiquidaciones != null)
@@ -234,6 +246,7 @@ namespace CapaPresentacion.ControlesDeUsuario
                 catch (Exception ex)
                 {
                     MessageBox.Show("no se pudo insertar los datos por: " + ex);
+
                 }
             }
             //EDITAR
@@ -241,14 +254,36 @@ namespace CapaPresentacion.ControlesDeUsuario
             {
                 try
                 {
-                    LiquidacionesCN.EditarLiquidaciones(idLiquidacion, txtExtras.Text, txtAnticipos.Text, txtBono.Text, txtBruto.Text);
-                    MessageBox.Show("se edito correctamente");
-                    MostrarLiquidaciones("");
+                    resultado = dgvLiquidaciones.CurrentRow.Cells["IdPeriodo"].Value.ToString();
+                    CN_Liquidaciones LiquidacionCN3 = new CN_Liquidaciones();
+
+                    LiquidacionCN3.EditarLiquidaciones(idLiquidacion, txtExtras.Text, txtAnticipos.Text, txtBono.Text, txtBruto.Text).ToString();
+                    MessageBox.Show("Se editó correctamente");
+                    CN_Liquidaciones LiquidacionCN2 = new CN_Liquidaciones();
+
+                    dgvLiquidaciones.DataSource = null;
+                    dgvLiquidaciones.Columns.Clear();
+                    dgvLiquidaciones.DataSource = LiquidacionCN2.MostrarLiquidaciones("",resultado);
+
+                    if (dgvLiquidaciones != null)
+                    {
+                        OpcionesDgv();
+                        BotonEliminar();
+                        dgvLiquidaciones.Columns["IdLiquidacion"].Visible = false;
+                        dgvLiquidaciones.Columns["IdPeriodo"].Visible = false;
+                        btnExportar.Enabled = true;
+                        limpiarForm();
+                        btnEliminar.Visible = false;
+                        btnGuardar.Visible = false;
+                    }
+                    
+
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("no se pudo editar los datos por: " + ex);
+
                 }
             }
             gbx2.Enabled= false;    

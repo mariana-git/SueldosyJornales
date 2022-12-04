@@ -14,8 +14,9 @@ namespace CapaNegocio
         DataTable tabla = new DataTable();
         DataTable tabla2 = new DataTable();
         int idperiodo = 0;
+        int resultado = 0;
 
-        
+
         public DataTable MostrarLiquidaciones(string dato, string periodo)
         {
             if (dato == "" && periodo=="")
@@ -88,7 +89,7 @@ namespace CapaNegocio
 
         }
 
-        public void EditarLiquidaciones(string idliq, string extras, string anticipos, string bonos, string bruto)
+        public int EditarLiquidaciones(string idliq, string extras, string anticipos, string bonos, string bruto)
         {
             int idliquidacion = Convert.ToInt32(idliq);
             decimal sumabruto = Convert.ToDecimal(bruto) + Convert.ToDecimal(extras) + Convert.ToDecimal(bonos);
@@ -96,7 +97,9 @@ namespace CapaNegocio
             decimal PAMI = sumabruto * 3 / 100;
             decimal os = sumabruto * 3 / 100;
             decimal neto = sumabruto - jubilacion - PAMI - os - Convert.ToDecimal(anticipos);
-            objetoCD.Editar(idliquidacion, Convert.ToDecimal(extras) , Convert.ToDecimal(anticipos), Convert.ToDecimal(bonos), os, PAMI,jubilacion, neto);
+            resultado=objetoCD.Editar(idliquidacion, Convert.ToDecimal(extras) , Convert.ToDecimal(anticipos), Convert.ToDecimal(bonos), os, PAMI,jubilacion, neto);
+
+            return resultado;
         }
 
         public void EliminarLiquidacion(string id)
