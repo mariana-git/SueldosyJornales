@@ -40,20 +40,19 @@ Remuneraciones a pagar.
 
 ## 🔵 Pantallas
 ### 🔹 Nómina
-![pantalla1](https://user-images.githubusercontent.com/88113403/205382046-d8f62cc4-d215-4bb6-83cf-c47bc1bfddb4.png)
+![pant1](https://user-images.githubusercontent.com/88113403/205506638-e16b14c6-009c-4be8-9698-fe233b36f7d4.png)
 
 ### 🔹 Puestos
-![pantalla2](https://user-images.githubusercontent.com/88113403/205381418-f064e9a2-a8ea-49e2-bf78-7056d68f494b.png)
+![pant2](https://user-images.githubusercontent.com/88113403/205506653-cf09a4b7-d5c0-4a28-b3a8-2b688d6b6324.png)
 
 ### 🔹 Liquidaciones>Generar
-![pantalla3](https://user-images.githubusercontent.com/88113403/205381529-1bbecefd-0498-4a42-b5b2-149dde6f8c28.png)
+![pant3](https://user-images.githubusercontent.com/88113403/205506659-31f50847-e312-48d9-a33b-9dc75787e6e1.png)
 
 ### 🔹 Liquidaciones>Ver
-![pantalla4](https://user-images.githubusercontent.com/88113403/205381625-36e2a8a5-4920-44bf-a658-a9cecce996e0.png)
+![pant4](https://user-images.githubusercontent.com/88113403/205506668-21cf1bbf-75b6-4bd5-8027-b991da38266f.png)
 
 ### 🔹 Recibos de Sueldo
-![pantalla5](https://user-images.githubusercontent.com/88113403/205381758-83a772d7-395e-411d-a042-d543827644d3.png)
-
+![pant5](https://user-images.githubusercontent.com/88113403/205506683-7fe4561d-1e2f-43a7-848c-9ce73eb7c3af.png)
 
 
 ## License
